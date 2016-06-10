@@ -35,14 +35,19 @@ Our IBM requires "Mathematica v10" to run the experiments definitions and analys
 -BehaviorSearch: download the program from the project's download section (http://behaviorsearch.org/) and please note that BehaviorSearch was created to run on previous versions of NetLogo so it might not be compatible with newer ones
 -Mathematica: unfortunately this is a non-free software so you have to buy it from Wolfram (http://www.wolfram.com/mathematica/)
 -PajaroLoco: follow the instructions on the following link (https://www.youtube.com/watch?v=0h3WvMk60dg)
--SoNA3BS: just download the folder with the programs' files (https://bitbucket.org/chipdelmal/sona3bs)
+-SoNA3BS: just download the folder with the programs' files.
+--------------------------------------------------------------
+************SIMULATION FILES DESCRIPTION**********************
+--------------------------------------------------------------
+auxiliaryFunctions.nls: Functions that perform general unspecific activities
+GoogleMap_HET.nls: Google Map's processed spatial layout in Catemaco, Veracruz
+GoogleMap_HOM.nls: Artificially homogeneous spatial layout with same demographic characteristics as GoogleMap_HET
+randomScenarios.nls: Five different artificially uniform generated scenarios for testing purposes
+movement: Pseudo-Random walking routines for agents
+schoolfield: Metabolic development model for mosquitos
+
 --------------------------------------------------------------
 ************CONTACT*******************************************
 --------------------------------------------------------------
 mail: sanchez.hmsc@itesm.com
 website: https://sites.google.com/site/sona3bs/ 
-==============================================================
---------------------------------------------------------------
-************SONA3BS README************************************
---------------------------------------------------------------
-==============================================================
