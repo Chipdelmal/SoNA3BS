@@ -35,6 +35,7 @@ Our IBM requires "Mathematica v10" to run the experiments definitions and analys
 * SoNA3BS: just download the folder with the programs' files.
 
 ## Simulation's Files Brief Description
+This is just for reference. For a more updated and thorough version look at the definitions within the files or the documentation folder.
 
 * go: Main simulation file
 * global: Global simulation parameters (exported from "ParameterExport.nb")
@@ -58,8 +59,8 @@ Our IBM requires "Mathematica v10" to run the experiments definitions and analys
 
 ## Contact
 
-mail: sanchez.hmsc@itesm.com
-website: https://sites.google.com/site/sona3bs/ 
+* mail: sanchez.hmsc@itesm.com
+* website: https://sites.google.com/site/sona3bs/ 
 
 ## Licence
 
