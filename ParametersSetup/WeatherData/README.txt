@@ -1,0 +1,1 @@
+Weather data obtained from: CLICOM of SMN (http://clicom-mex.cicese.mx)

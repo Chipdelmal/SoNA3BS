@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<!DOCTYPE search SYSTEM "behaviorsearch.dtd">
+<search>
+<bsearchVersionNumber>1.00</bsearchVersionNumber>
+<modelInfo>
+<modelFile>C:\Users\chipdelmalA\Google Drive\SoNAAABS\61_FitnessTest\MainModel.nlogo</modelFile>
+<modelSetupCommands>setup</modelSetupCommands>
+<modelStepCommands>go</modelStepCommands>
+<modelStopCondition>count aedesp = 0</modelStopCondition>
+<modelStepLimit>1000</modelStepLimit>
+<modelMetricReporter>((stercost * (count aedesp with [sterile? = true])) + (oxicost * (count aedesp with [oxitech? = true])) + (fitcost * (count aedesp with [fitness_selected? = true])) + (wolcost * (count aedesp with [wolbachia? = true])))/((count aedesp with [female? = true and life_stage = 3 and wolbachia = false and fitness_selected = false]) + (count aedesp with [female? = true and life_stage = 3 and wolbachia = true and fitnes_selected? = false] * (1-.9)) +(count aedesp with [female? = true and life_stage = 3 and wolbachia = true and fitnes_selected? = true] * (1-.9))(count aedesp with [female? = true and life_stage = 3 and wolbachia = false and fitness_selected = true] * (1-.15)))</modelMetricReporter>
+<modelMeasureIf>ticks mod 50 = 0</modelMeasureIf>
+</modelInfo>
+<fitnessInfo>
+<fitnessMinimized>false</fitnessMinimized>
+<fitnessCollecting>AT_FINAL_STEP</fitnessCollecting>
+<fitnessSamplingReplications>10</fitnessSamplingReplications>
+<fitnessCombineReplications>MEAN</fitnessCombineReplications>
+</fitnessInfo>
+<searchSpace>
+<paramSpec>["sterile_ratio" [0 0.05 1]]</paramSpec>
+<paramSpec>["wolbachia_ratio" [0 0.05 1]]</paramSpec>
+<paramSpec>["fitness_selected_ratio" [0 0.05 1]]</paramSpec>
+<paramSpec>["oxitech_ratio" [0 0.05 1]]</paramSpec>
+<paramSpec/>
+<paramSpec>["wolcost" 100]</paramSpec>
+<paramSpec>["stercost" 20]</paramSpec>
+<paramSpec>["fitcost" 50]</paramSpec>
+<paramSpec>["oxicost" 50]</paramSpec>
+<paramSpec/>
+<paramSpec>["breeding_extermination" false]</paramSpec>
+<paramSpec>["fumigation" false]</paramSpec>
+<paramSpec>["breeding_replacement_wolbachia" false]</paramSpec>
+<paramSpec>["breeding_replacement_sterile" false]</paramSpec>
+<paramSpec>["breeding_replacement_oxitech" false]</paramSpec>
+<paramSpec>["breeding_replacement_fitness" false]</paramSpec>
+<paramSpec/>
+<paramSpec>["store_bites" true]</paramSpec>
+<paramSpec>["store_human_contact" false]</paramSpec>
+<paramSpec>["store_house_contact" false]</paramSpec>
+<paramSpec>["store_control_releases" true]</paramSpec>
+<paramSpec/>
+<paramSpec>["release_sterile" false]</paramSpec>
+<paramSpec>["release_wolbachia" false]</paramSpec>
+<paramSpec>["release_oxitech" false]</paramSpec>
+<paramSpec>["release_fitness" false]</paramSpec>
+<paramSpec/>
+<paramSpec>["ovitraps?" false]</paramSpec>
+<paramSpec>["sugar_baits?" false]</paramSpec>
+<paramSpec/>
+<paramSpec>["initial_population" 400]</paramSpec>
+<paramSpec>["human_visit" true]</paramSpec>
+<paramSpec>["food_dynamics?" false]</paramSpec>
+<paramSpec>["export_rate" 144]</paramSpec>
+<paramSpec>["larva_competition?" true]</paramSpec>
+<paramSpec>["egg_inhibition?" true]</paramSpec>
+<paramSpec>["temperature_type" "Constant"]</paramSpec>
+<paramSpec>["constant_temperature" 25]</paramSpec>
+</searchSpace>
+<searchMethod type="SimulatedAnnealing">
+<searchMethodParameter name="mutation-rate" value="0.05"/>
+<searchMethodParameter name="temperature-change-factor" value="0.99"/>
+<searchMethodParameter name="initial-temperature" value="1.0"/>
+<searchMethodParameter name="restart-after-stall-count" value="0"/>
+</searchMethod>
+<chromosomeRepresentation type="MixedTypeChromosome"/>
+<caching>true</caching>
+<evaluationLimit>300</evaluationLimit>
+<bestCheckingNumReplications>0</bestCheckingNumReplications>
+</search>

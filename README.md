@@ -29,10 +29,11 @@ Our IBM requires "Mathematica v10" to run the experiments definitions and analys
 ## Installation Instructions
 
 * NetLogo: simply download the program from the project's download section (https://ccl.northwestern.edu/netlogo/)
+* SoNA3BS: just download the folder with the programs' files.
 * BehaviorSearch: download the program from the project's download section (http://behaviorsearch.org/) and please note that BehaviorSearch was created to run on previous versions of NetLogo so it might not be compatible with newer ones
 * Mathematica: unfortunately this is a non-free software so you have to buy it from Wolfram (http://www.wolfram.com/mathematica/)
-* PajaroLoco: follow the instructions on the following link (https://www.youtube.com/watch?v=0h3WvMk60dg)
-* SoNA3BS: just download the folder with the programs' files.
+* PajaroLoco: follow the instructions on the following link (https://bitbucket.org/chipdelmal/pajarolocopublic)
+* BehaviourSpaceInterface: download and install following the same instruccions as the ones for PajaroLoco (https://bitbucket.org/chipdelmal/behaviorspaceinterface)
 
 ## Simulation's Files Brief Description
 This is just for reference. For a more updated and thorough version look at the definitions within the files or the documentation folder.

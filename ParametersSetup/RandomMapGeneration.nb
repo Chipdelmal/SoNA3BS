@@ -1,0 +1,1164 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     49544,       1156]
+NotebookOptionsPosition[     48765,       1122]
+NotebookOutlinePosition[     49123,       1138]
+CellTagsIndexPosition[     49080,       1135]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Random Map Generation", "Title",
+ CellChangeTimes->{{3.628000803751548*^9, 3.628000816115748*^9}, {
+  3.675019035908136*^9, 3.675019038827317*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["H\[EAcute]ctor Manuel S\[AAcute]nchez Castellanos", "Chapter",
+ CellChangeTimes->{{3.62800081745341*^9, 3.628000824220882*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Functions", "Section",
+ CellChangeTimes->{{3.628000660052009*^9, 3.628000664514608*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"<<", "BehaviorSpaceInterface`"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"FindHouses", "[", 
+   RowBox[{
+   "map_", ",", "morphoThreshold_", ",", "minSize_", ",", "maxSize_", ",", 
+    "rectangularity_"}], "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "morpho", ",", "img1", ",", "m", ",", "img2", ",", "common", ",", 
+      "replaced", ",", "m2", ",", "multi", ",", "coords", ",", "final"}], 
+     "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"morpho", "=", 
+      RowBox[{
+       RowBox[{"MorphologicalComponents", "[", 
+        RowBox[{"map", ",", "morphoThreshold", ",", 
+         RowBox[{"CornerNeighbors", "\[Rule]", "True"}]}], "]"}], "//", 
+       "Colorize"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"img1", "=", 
+      RowBox[{"ImageCompose", "[", 
+       RowBox[{"map", ",", 
+        RowBox[{"{", 
+         RowBox[{"morpho", ",", ".5"}], "}"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"m", "=", 
+      RowBox[{
+       RowBox[{"SelectComponents", "[", 
+        RowBox[{"morpho", ",", 
+         RowBox[{"{", 
+          RowBox[{
+          "\"\<BoundingBoxArea\>\"", ",", "\"\<BoundingBoxArea\>\"", ",", 
+           "\"\<Rectangularity\>\""}], "}"}], ",", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"#1", ">", "minSize"}], "&&", 
+           RowBox[{"#2", "<", "maxSize"}], "&&", 
+           RowBox[{"#3", ">", "rectangularity"}]}], "&"}], ",", 
+         RowBox[{"-", "1"}]}], "]"}], "//", "Colorize"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"img2", "=", 
+      RowBox[{"ImageCompose", "[", 
+       RowBox[{"map", ",", 
+        RowBox[{"{", 
+         RowBox[{"m", ",", ".75"}], "}"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"common", "=", 
+      RowBox[{
+       RowBox[{"Commonest", "[", 
+        RowBox[{"Flatten", "[", 
+         RowBox[{
+          RowBox[{"ImageData", "[", "m", "]"}], ",", "1"}], "]"}], "]"}], "[", 
+       RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"replaced", "=", 
+      RowBox[{"Map", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{"#", "\[Equal]", "common"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", "#"}], "]"}], 
+         "&"}], ",", 
+        RowBox[{"m", "//", "ImageData"}], ",", 
+        RowBox[{"{", "2", "}"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"m2", "=", 
+      RowBox[{"replaced", "//", "Image"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"multi", "=", 
+      RowBox[{"ImageMultiply", "[", 
+       RowBox[{"map", ",", "m2"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"coords", "=", 
+      RowBox[{"ComponentMeasurements", "[", 
+       RowBox[{"multi", ",", 
+        RowBox[{"{", 
+         RowBox[{"\"\<Centroid\>\"", ",", "\"\<BoundingBoxArea\>\""}], 
+         "}"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"final", "=", 
+      RowBox[{"Show", "[", 
+       RowBox[{"map", ",", 
+        RowBox[{"Graphics", "[", 
+         RowBox[{"{", 
+          RowBox[{"Red", ",", "Thick", ",", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"Circle", "[", 
+              RowBox[{
+               RowBox[{"#", "[", 
+                RowBox[{"[", "1", "]"}], "]"}], ",", 
+               RowBox[{"#", "[", 
+                RowBox[{"[", "2", "]"}], "]"}]}], "]"}], "&"}], "/@", 
+            RowBox[{
+             RowBox[{"ComponentMeasurements", "[", 
+              RowBox[{"multi", ",", 
+               RowBox[{"{", 
+                RowBox[{
+                "\"\<Centroid\>\"", ",", "\"\<EquivalentDiskRadius\>\""}], 
+                "}"}]}], "]"}], "[", 
+             RowBox[{"[", 
+              RowBox[{"All", ",", "2"}], "]"}], "]"}]}]}], "}"}], "]"}]}], 
+       "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"img1", ",", "img2", ",", "multi", ",", "final"}], "}"}], ",",
+        "coords"}], "}"}]}]}], "\[IndentingNewLine]", 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"GetMap", "[", 
+   RowBox[{"center_", ",", "zoom_", ",", "size_"}], "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"root", ",", "cen", ",", "zoo", ",", "si", ",", "tail"}], "}"}], 
+    ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{
+     "root", "=", "\"\<http://maps.googleapis.com/maps/api/staticmap?\>\""}], 
+     ";", "\[IndentingNewLine]", 
+     RowBox[{"cen", "=", 
+      RowBox[{"\"\<center=\>\"", "<>", 
+       RowBox[{"ToString", "[", 
+        RowBox[{"center", "[", 
+         RowBox[{"[", "1", "]"}], "]"}], "]"}], "<>", "\"\<,\>\"", "<>", 
+       RowBox[{"ToString", "[", 
+        RowBox[{"center", "[", 
+         RowBox[{"[", "2", "]"}], "]"}], "]"}], "<>", "\"\<&\>\""}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"zoo", "=", 
+      RowBox[{"\"\<zoom=\>\"", "<>", 
+       RowBox[{"ToString", "[", "zoom", "]"}], "<>", "\"\<&\>\""}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"si", "=", 
+      RowBox[{"\"\<size=\>\"", "<>", 
+       RowBox[{"ToString", "[", 
+        RowBox[{"size", "[", 
+         RowBox[{"[", "1", "]"}], "]"}], "]"}], "<>", "\"\<x\>\"", "<>", 
+       RowBox[{"ToString", "[", 
+        RowBox[{"size", "[", 
+         RowBox[{"[", "2", "]"}], "]"}], "]"}], "<>", "\"\<&\>\""}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"tail", "=", "\"\<maptype=satellite&scale=2\>\""}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Import", "[", 
+      RowBox[{"root", "<>", "cen", "<>", "zoo", "<>", "si", "<>", "tail"}], 
+      "]"}]}]}], "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"GetMapRoad", "[", 
+   RowBox[{"center_", ",", "zoom_", ",", "size_"}], "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "root", ",", "cen", ",", "zoo", ",", "si", ",", "tail", ",", "road"}], 
+     "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{
+     "root", "=", "\"\<http://maps.googleapis.com/maps/api/staticmap?\>\""}], 
+     ";", "\[IndentingNewLine]", 
+     RowBox[{"cen", "=", 
+      RowBox[{"\"\<center=\>\"", "<>", 
+       RowBox[{"ToString", "[", 
+        RowBox[{"center", "[", 
+         RowBox[{"[", "1", "]"}], "]"}], "]"}], "<>", "\"\<,\>\"", "<>", 
+       RowBox[{"ToString", "[", 
+        RowBox[{"center", "[", 
+         RowBox[{"[", "2", "]"}], "]"}], "]"}], "<>", "\"\<&\>\""}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"zoo", "=", 
+      RowBox[{"\"\<zoom=\>\"", "<>", 
+       RowBox[{"ToString", "[", "zoom", "]"}], "<>", "\"\<&\>\""}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"si", "=", 
+      RowBox[{"\"\<size=\>\"", "<>", 
+       RowBox[{"ToString", "[", 
+        RowBox[{"size", "[", 
+         RowBox[{"[", "1", "]"}], "]"}], "]"}], "<>", "\"\<x\>\"", "<>", 
+       RowBox[{"ToString", "[", 
+        RowBox[{"size", "[", 
+         RowBox[{"[", "2", "]"}], "]"}], "]"}], "<>", "\"\<&\>\""}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"tail", "=", "\"\<scale=2&\>\""}], ";", "\[IndentingNewLine]", 
+     RowBox[{
+     "road", "=", 
+      "\"\<style=feature:road.local%7Celement:geometry%7Ccolor:0x00ff00%\
+7Cweight:1%7Cvisibility:on&style=feature:landscape%7Celement:geometry.fill%\
+7Ccolor:0x000000%7Cvisibility:on&7Cinvert_lightness:true&style=feature:poi%\
+7Cvisibility:off&style=feature:administrative%7Celement:labels%7Cweight:0%\
+7Cvisibility:off%\>\""}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Print", "[", 
+      RowBox[{
+      "root", "<>", "cen", "<>", "zoo", "<>", "si", "<>", "tail", "<>", 
+       "road"}], "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Import", "[", 
+      RowBox[{
+      "root", "<>", "cen", "<>", "zoo", "<>", "si", "<>", "tail", "<>", 
+       "road"}], "]"}]}]}], "\[IndentingNewLine]", 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ConvertMapToBinaryCVS", "[", "data_", "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "binarizedMap", ",", "tempString", ",", "newData", ",", "iS", ",", "jS",
+        ",", "dS", ",", "path", ",", "lastPart", ",", "fullPath"}], "}"}], 
+     ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"tempString", "=", "\"\<\>\""}], ";", "\[IndentingNewLine]", 
+      RowBox[{"newData", "=", 
+       RowBox[{"Table", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Table", "[", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"iS", "=", 
+             RowBox[{"ToString", "[", "i", "]"}]}], ";", 
+            "\[IndentingNewLine]", 
+            RowBox[{"jS", "=", 
+             RowBox[{"ToString", "[", "j", "]"}]}], ";", 
+            "\[IndentingNewLine]", 
+            RowBox[{"dS", "=", 
+             RowBox[{"ToString", "[", 
+              RowBox[{
+               RowBox[{"data", "[", 
+                RowBox[{"[", "i", "]"}], "]"}], "[", 
+               RowBox[{"[", "j", "]"}], "]"}], "]"}]}], ";", 
+            "\[IndentingNewLine]", 
+            RowBox[{"tempString", "=", 
+             RowBox[{"StringJoin", "[", 
+              RowBox[{"tempString", ",", 
+               RowBox[{"StringJoin", "[", 
+                RowBox[{
+                "jS", ",", "\"\<\\t\>\"", ",", "iS", ",", "\"\<\\t\>\"", ",", 
+                 "dS", ",", " ", "\"\<\\n\>\""}], "]"}]}], "]"}]}], ";"}], 
+           "\[IndentingNewLine]", ",", 
+           RowBox[{"{", 
+            RowBox[{"j", ",", "1", ",", 
+             RowBox[{"Length", "[", 
+              RowBox[{"data", "[", 
+               RowBox[{"[", "1", "]"}], "]"}], "]"}]}], "}"}]}], "]"}], 
+         "\[IndentingNewLine]", ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "1", ",", 
+           RowBox[{"Length", "[", 
+            RowBox[{
+             RowBox[{"Transpose", "[", "data", "]"}], "[", 
+             RowBox[{"[", "1", "]"}], "]"}], "]"}]}], "}"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", "tempString"}]}], "\[IndentingNewLine]", "]"}]}],
+   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"MathematicaToNLogoList", "[", "list_", "]"}], ":=", 
+  RowBox[{"StringReplace", "[", 
+   RowBox[{
+    RowBox[{"ToString", "[", "list", "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"\"\<{\>\"", "\[Rule]", "\"\<(list \>\""}], ",", 
+      RowBox[{"\"\<}\>\"", "\[Rule]", "\"\<)\>\""}], ",", 
+      RowBox[{"\"\<,\>\"", "\[Rule]", "\"\<\>\""}]}], "}"}]}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ConvertToNetLogoCoordinates", "[", 
+   RowBox[{"coordinates_", ",", "imageDimensions_", ",", "scalingFactor_"}], 
+   "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"dims", "=", 
+       RowBox[{"imageDimensions", "/", "2"}]}], ",", "newCoords"}], "}"}], 
+    ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"newCoords", "=", 
+      RowBox[{"Floor", "/@", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"#", "[", 
+              RowBox[{"[", "1", "]"}], "]"}], "-", 
+             RowBox[{"dims", "[", 
+              RowBox[{"[", "1", "]"}], "]"}]}], ",", 
+            RowBox[{
+             RowBox[{"#", "[", 
+              RowBox[{"[", "2", "]"}], "]"}], "-", 
+             RowBox[{"dims", "[", 
+              RowBox[{"[", "2", "]"}], "]"}]}]}], "}"}], "&"}], "/@", 
+         "coordinates"}], ")"}]}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Floor", "/@", 
+      RowBox[{"(", 
+       RowBox[{"newCoords", "/", "scalingFactor"}], ")"}]}]}]}], 
+   "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"CreateStringCoordinatesAndAreas", "[", 
+   RowBox[{"coordinates_", ",", "areas_", ",", "individualsScaling_"}], "]"}],
+   ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "temp", ",", "coords", ",", "xcoords", ",", "ycoords", ",", "areasNL", 
+      ",", "coordsString", ",", "groupsNL", ",", "individualsNL", ",", 
+      "individualsNamesL", ",", "housesNamesL", ",", "workNamesL"}], "}"}], 
+    ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"temp", "=", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"ToString", "[", "#", "]"}], "&"}], "/@", 
+       RowBox[{"(", 
+        RowBox[{"coordinates", "//", "Transpose"}], ")"}]}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"coords", "=", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"StringReplace", "[", 
+         RowBox[{"#", ",", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"\"\<{\>\"", "\[Rule]", "\"\<(list \>\""}], ",", 
+            RowBox[{"\"\<}\>\"", "\[Rule]", "\"\<)\>\""}], ",", 
+            RowBox[{"\"\<,\>\"", "\[Rule]", "\"\<\>\""}]}], "}"}]}], "]"}], 
+        "&"}], "/@", "temp"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"xcoords", "=", 
+      RowBox[{"coords", "[", 
+       RowBox[{"[", "1", "]"}], "]"}]}], ";", 
+     RowBox[{"ycoords", "=", 
+      RowBox[{"coords", "[", 
+       RowBox[{"[", "2", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"coordsString", "=", 
+      RowBox[{
+      "\"\<set xcord \>\"", "<>", "xcoords", " ", "<>", "\"\<\\n\>\"", "<>", 
+       "\"\<set ycord \>\"", "<>", "ycoords", "<>", "\"\<\\n\>\""}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"areasNL", "=", 
+      RowBox[{"\"\<set areas \\n\>\"", "<>", 
+       RowBox[{"StringReplace", "[", 
+        RowBox[{
+         RowBox[{"ToString", "[", "areas", "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"\"\<{\>\"", "\[Rule]", "\"\<(list \>\""}], ",", 
+           RowBox[{"\"\<}\>\"", "\[Rule]", "\"\<)\>\""}], ",", 
+           RowBox[{"\"\<,\>\"", "\[Rule]", "\"\<\>\""}]}], "}"}]}], "]"}]}]}],
+      ";", "\[IndentingNewLine]", 
+     RowBox[{"groupsNL", "=", 
+      RowBox[{"\"\<set groups \\n\>\"", "<>", 
+       RowBox[{"StringReplace", "[", 
+        RowBox[{
+         RowBox[{"ToString", "[", 
+          RowBox[{"Range", "[", 
+           RowBox[{"areas", "//", "Length"}], "]"}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"\"\<{\>\"", "\[Rule]", "\"\<(list \>\""}], ",", 
+           RowBox[{"\"\<}\>\"", "\[Rule]", "\"\<)\>\""}], ",", 
+           RowBox[{"\"\<,\>\"", "\[Rule]", "\"\<\>\""}]}], "}"}]}], "]"}]}]}],
+      ";", "\[IndentingNewLine]", 
+     RowBox[{"individualsNL", "=", 
+      RowBox[{"\"\<set individuals \\n\>\"", "<>", 
+       RowBox[{"StringReplace", "[", 
+        RowBox[{
+         RowBox[{"ToString", "[", 
+          RowBox[{
+           RowBox[{"areas", "/", "individualsScaling"}], "//", "Floor"}], 
+          "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"\"\<{\>\"", "\[Rule]", "\"\<(list \>\""}], ",", 
+           RowBox[{"\"\<}\>\"", "\[Rule]", "\"\<)\>\""}], ",", 
+           RowBox[{"\"\<,\>\"", "\[Rule]", "\"\<\>\""}]}], "}"}]}], "]"}]}]}],
+      ";", "\[IndentingNewLine]", 
+     RowBox[{"individualsNamesL", "=", 
+      RowBox[{"\"\<set names_listg \\n\>\"", "<>", 
+       RowBox[{"StringReplace", "[", 
+        RowBox[{
+         RowBox[{"ToString", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"\"\<\\\"\>\"", "<>", 
+             RowBox[{"ToString", "[", "#", "]"}], "<>", "\"\<\\\"\>\""}], 
+            "&"}], "/@", 
+           RowBox[{"chars2", "[", 
+            RowBox[{"[", 
+             RowBox[{"1", ";;", 
+              RowBox[{"(", 
+               RowBox[{"coordinates", "//", "Length"}], ")"}]}], "]"}], 
+            "]"}]}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"\"\<{\>\"", "\[Rule]", "\"\<(list \>\""}], ",", 
+           RowBox[{"\"\<}\>\"", "\[Rule]", "\"\<)\>\""}], ",", 
+           RowBox[{"\"\<,\>\"", "\[Rule]", "\"\<\>\""}]}], "}"}]}], "]"}]}]}],
+      ";", "\[IndentingNewLine]", 
+     RowBox[{"(*", 
+      RowBox[{
+       RowBox[{"individualsNamesL", "=", 
+        RowBox[{"\"\<set names_listg \\n\>\"", "<>", 
+         RowBox[{"StringReplace", "[", 
+          RowBox[{
+           RowBox[{"ToString", "[", 
+            RowBox[{"Range", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"areas", "/", "individualsScaling"}], "//", "Floor"}], 
+              "//", "Total"}], "]"}], "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"\"\<{\>\"", "\[Rule]", "\"\<(list \>\""}], ",", 
+             RowBox[{"\"\<}\>\"", "\[Rule]", "\"\<)\>\""}], ",", 
+             RowBox[{"\"\<,\>\"", "\[Rule]", "\"\<\>\""}]}], "}"}]}], 
+          "]"}]}]}], ";"}], "*)"}], "\[IndentingNewLine]", 
+     RowBox[{"(*", 
+      RowBox[{
+       RowBox[{"housesNamesL", "=", 
+        RowBox[{"\"\<set names_houses \\n\>\"", "<>", 
+         RowBox[{"StringReplace", "[", 
+          RowBox[{
+           RowBox[{"ToString", "[", 
+            RowBox[{"Range", "[", 
+             RowBox[{"coordinates", "//", "Length"}], "]"}], "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"\"\<{\>\"", "\[Rule]", "\"\<(list \>\""}], ",", 
+             RowBox[{"\"\<}\>\"", "\[Rule]", "\"\<)\>\""}], ",", 
+             RowBox[{"\"\<,\>\"", "\[Rule]", "\"\<\>\""}]}], "}"}]}], 
+          "]"}]}]}], ";"}], "*)"}], "\[IndentingNewLine]", 
+     RowBox[{"housesNamesL", "=", 
+      RowBox[{"\"\<set names_houses \\n\>\"", "<>", 
+       RowBox[{"StringReplace", "[", 
+        RowBox[{
+         RowBox[{"ToString", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"\"\<\\\"\>\"", "<>", 
+             RowBox[{"ToString", "[", "#", "]"}], "<>", "\"\<\\\"\>\""}], 
+            "&"}], "/@", 
+           RowBox[{"chars", "[", 
+            RowBox[{"[", 
+             RowBox[{"1", ";;", 
+              RowBox[{"(", 
+               RowBox[{"coordinates", "//", "Length"}], ")"}]}], "]"}], 
+            "]"}]}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"\"\<{\>\"", "\[Rule]", "\"\<(list \>\""}], ",", 
+           RowBox[{"\"\<}\>\"", "\[Rule]", "\"\<)\>\""}], ",", 
+           RowBox[{"\"\<,\>\"", "\[Rule]", "\"\<\>\""}]}], "}"}]}], "]"}]}]}],
+      ";", "\[IndentingNewLine]", 
+     RowBox[{"workNamesL", "=", 
+      RowBox[{"\"\<set names_workZones \\n\>\"", "<>", 
+       RowBox[{"StringReplace", "[", 
+        RowBox[{
+         RowBox[{"ToString", "[", 
+          RowBox[{"Range", "[", "1", "]"}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"\"\<{\>\"", "\[Rule]", "\"\<(list \>\""}], ",", 
+           RowBox[{"\"\<}\>\"", "\[Rule]", "\"\<)\>\""}], ",", 
+           RowBox[{"\"\<,\>\"", "\[Rule]", "\"\< \>\""}]}], "}"}]}], 
+        "]"}]}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{
+     "\"\<to set-coordinates \\n\>\"", "<>", "\"\<\\t\>\"", "<>", 
+      "coordsString", "<>", "\"\<\\t\>\"", "<>", "areasNL", "<>", 
+      "\"\<\\n\\t\>\"", "<>", "groupsNL", "<>", "\"\<\\n\\t\>\"", "<>", 
+      "individualsNL", "<>", "\"\<\\n\\t\>\"", "<>", "individualsNamesL", 
+      "<>", "\"\<\\n\\t\>\"", "<>", "housesNamesL", "<>", "\"\<\\n\\t\>\"", "<>",
+       "workNamesL", "<>", "\"\<\\n\\t\>\"", "<>", "\"\<\\nend\>\""}]}]}], 
+   "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"FindRoads", "[", 
+   RowBox[{"map2_", ",", "worldSize_"}], "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "river", ",", "road", ",", "dataB", ",", "dataCSV", ",", "fixed"}], 
+     "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"river", "=", 
+      RowBox[{"Image", "[", 
+       RowBox[{"SelectComponents", "[", 
+        RowBox[{
+         RowBox[{"MorphologicalComponents", "[", 
+          RowBox[{
+           RowBox[{"ColorNegate", "[", "map2", "]"}], ",", "0.82"}], "]"}], 
+         ",", "\"\<Length\>\"", ",", 
+         RowBox[{"-", "1"}]}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"road", "=", 
+      RowBox[{
+       RowBox[{"ImageApply", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"#", " ", 
+           RowBox[{"{", 
+            RowBox[{".5", ",", "1", ",", ".5"}], "}"}]}], "&"}], ",", "map2", 
+         ",", 
+         RowBox[{"Masking", "\[Rule]", 
+          RowBox[{"Dilation", "[", 
+           RowBox[{"river", ",", "5"}], "]"}]}]}], "]"}], "//", 
+       "ColorSeparate"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"dataB", "=", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"road", "[", 
+            RowBox[{"[", "2", "]"}], "]"}], "//", 
+           RowBox[{
+            RowBox[{"ImageResize", "[", 
+             RowBox[{"#", ",", "worldSize"}], "]"}], "&"}]}], "//", 
+          RowBox[{
+           RowBox[{"Dilation", "[", 
+            RowBox[{"#", ",", "1"}], "]"}], "&"}]}], "//", 
+         RowBox[{
+          RowBox[{"Blur", "[", 
+           RowBox[{"#", ",", "5"}], "]"}], "&"}]}], "//", "ImageReflect"}], "//",
+        "Binarize"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"dataCSV", "=", 
+      RowBox[{"ConvertMapToBinaryCVS", "[", 
+       RowBox[{"dataB", "//", "ImageData"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"fixed", "=", 
+      RowBox[{"(*", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"worldSize", "[", 
+           RowBox[{"[", "1", "]"}], "]"}], "//", "ToString"}], ")"}], "<>", 
+        "\"\<\\t\>\"", "<>", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"worldSize", "[", 
+           RowBox[{"[", "2", "]"}], "]"}], "//", "ToString"}], ")"}], "<>", 
+        "\"\<\\n\>\"", "<>"}], "*)"}], "dataCSV"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{"dataB", ",", "fixed"}], "}"}]}]}], "\[IndentingNewLine]", 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"chars", "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"StringJoin", "@@", "#"}], "&"}], "/@", 
+    RowBox[{"Tuples", "[", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"CharacterRange", "[", 
+        RowBox[{"\"\<A\>\"", ",", "\"\<Z\>\""}], "]"}], ",", 
+       RowBox[{"CharacterRange", "[", 
+        RowBox[{"\"\<A\>\"", ",", "\"\<Z\>\""}], "]"}]}], "}"}], "]"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"chars2", "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"StringJoin", "@@", "#"}], "&"}], "/@", 
+    RowBox[{"Tuples", "[", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"CharacterRange", "[", 
+        RowBox[{"\"\<a\>\"", ",", "\"\<z\>\""}], "]"}], ",", 
+       RowBox[{"CharacterRange", "[", 
+        RowBox[{"\"\<a\>\"", ",", "\"\<z\>\""}], "]"}]}], "}"}], "]"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"SetDirectory", "[", 
+  RowBox[{"NotebookDirectory", "[", "]"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"MathematicaToNLogoList", "[", "list_", "]"}], ":=", 
+  RowBox[{"StringReplace", "[", 
+   RowBox[{
+    RowBox[{"ToString", "[", "list", "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"\"\<{\>\"", "\[Rule]", "\"\<(list \>\""}], ",", 
+      RowBox[{"\"\<}\>\"", "\[Rule]", "\"\<)\>\""}], ",", 
+      RowBox[{"\"\<,\>\"", "\[Rule]", "\"\<\>\""}]}], "}"}]}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"GetMap", "[", 
+   RowBox[{"center_", ",", "zoom_", ",", "size_"}], "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"root", ",", "cen", ",", "zoo", ",", "si", ",", "tail"}], "}"}], 
+    ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{
+     "root", "=", "\"\<http://maps.googleapis.com/maps/api/staticmap?\>\""}], 
+     ";", "\[IndentingNewLine]", 
+     RowBox[{"cen", "=", 
+      RowBox[{"\"\<center=\>\"", "<>", 
+       RowBox[{"ToString", "[", 
+        RowBox[{"center", "[", 
+         RowBox[{"[", "1", "]"}], "]"}], "]"}], "<>", "\"\<,\>\"", "<>", 
+       RowBox[{"ToString", "[", 
+        RowBox[{"center", "[", 
+         RowBox[{"[", "2", "]"}], "]"}], "]"}], "<>", "\"\<&\>\""}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"zoo", "=", 
+      RowBox[{"\"\<zoom=\>\"", "<>", 
+       RowBox[{"ToString", "[", "zoom", "]"}], "<>", "\"\<&\>\""}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"si", "=", 
+      RowBox[{"\"\<size=\>\"", "<>", 
+       RowBox[{"ToString", "[", 
+        RowBox[{"size", "[", 
+         RowBox[{"[", "1", "]"}], "]"}], "]"}], "<>", "\"\<x\>\"", "<>", 
+       RowBox[{"ToString", "[", 
+        RowBox[{"size", "[", 
+         RowBox[{"[", "2", "]"}], "]"}], "]"}], "<>", "\"\<&\>\""}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"tail", "=", "\"\<maptype=satellite&scale=2\>\""}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Import", "[", 
+      RowBox[{"root", "<>", "cen", "<>", "zoo", "<>", "si", "<>", "tail"}], 
+      "]"}]}]}], "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"GetMapRoad", "[", 
+   RowBox[{"center_", ",", "zoom_", ",", "size_"}], "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "root", ",", "cen", ",", "zoo", ",", "si", ",", "tail", ",", "road"}], 
+     "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{
+     "root", "=", "\"\<http://maps.googleapis.com/maps/api/staticmap?\>\""}], 
+     ";", "\[IndentingNewLine]", 
+     RowBox[{"cen", "=", 
+      RowBox[{"\"\<center=\>\"", "<>", 
+       RowBox[{"ToString", "[", 
+        RowBox[{"center", "[", 
+         RowBox[{"[", "1", "]"}], "]"}], "]"}], "<>", "\"\<,\>\"", "<>", 
+       RowBox[{"ToString", "[", 
+        RowBox[{"center", "[", 
+         RowBox[{"[", "2", "]"}], "]"}], "]"}], "<>", "\"\<&\>\""}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"zoo", "=", 
+      RowBox[{"\"\<zoom=\>\"", "<>", 
+       RowBox[{"ToString", "[", "zoom", "]"}], "<>", "\"\<&\>\""}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"si", "=", 
+      RowBox[{"\"\<size=\>\"", "<>", 
+       RowBox[{"ToString", "[", 
+        RowBox[{"size", "[", 
+         RowBox[{"[", "1", "]"}], "]"}], "]"}], "<>", "\"\<x\>\"", "<>", 
+       RowBox[{"ToString", "[", 
+        RowBox[{"size", "[", 
+         RowBox[{"[", "2", "]"}], "]"}], "]"}], "<>", "\"\<&\>\""}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"tail", "=", "\"\<scale=2&\>\""}], ";", "\[IndentingNewLine]", 
+     RowBox[{
+     "road", "=", 
+      "\"\<style=feature:road.local%7Celement:geometry%7Ccolor:0x00ff00%\
+7Cweight:1%7Cvisibility:on&style=feature:landscape%7Celement:geometry.fill%\
+7Ccolor:0x000000%7Cvisibility:on&7Cinvert_lightness:true&style=feature:poi%\
+7Cvisibility:off&style=feature:administrative%7Celement:labels%7Cweight:0%\
+7Cvisibility:off%\>\""}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Print", "[", 
+      RowBox[{
+      "root", "<>", "cen", "<>", "zoo", "<>", "si", "<>", "tail", "<>", 
+       "road"}], "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Import", "[", 
+      RowBox[{
+      "root", "<>", "cen", "<>", "zoo", "<>", "si", "<>", "tail", "<>", 
+       "road"}], "]"}]}]}], "\[IndentingNewLine]", 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ConvertMapToBinaryCVS", "[", "data_", "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "binarizedMap", ",", "tempString", ",", "newData", ",", "iS", ",", "jS",
+        ",", "dS", ",", "path", ",", "lastPart", ",", "fullPath"}], "}"}], 
+     ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"tempString", "=", "\"\<\>\""}], ";", "\[IndentingNewLine]", 
+      RowBox[{"newData", "=", 
+       RowBox[{"Table", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Table", "[", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"iS", "=", 
+             RowBox[{"ToString", "[", "i", "]"}]}], ";", 
+            "\[IndentingNewLine]", 
+            RowBox[{"jS", "=", 
+             RowBox[{"ToString", "[", "j", "]"}]}], ";", 
+            "\[IndentingNewLine]", 
+            RowBox[{"dS", "=", 
+             RowBox[{"ToString", "[", 
+              RowBox[{
+               RowBox[{"data", "[", 
+                RowBox[{"[", "i", "]"}], "]"}], "[", 
+               RowBox[{"[", "j", "]"}], "]"}], "]"}]}], ";", 
+            "\[IndentingNewLine]", 
+            RowBox[{"tempString", "=", 
+             RowBox[{"StringJoin", "[", 
+              RowBox[{"tempString", ",", 
+               RowBox[{"StringJoin", "[", 
+                RowBox[{
+                "jS", ",", "\"\<\\t\>\"", ",", "iS", ",", "\"\<\\t\>\"", ",", 
+                 "dS", ",", " ", "\"\<\\n\>\""}], "]"}]}], "]"}]}], ";"}], 
+           "\[IndentingNewLine]", ",", 
+           RowBox[{"{", 
+            RowBox[{"j", ",", "1", ",", 
+             RowBox[{"Length", "[", 
+              RowBox[{"data", "[", 
+               RowBox[{"[", "1", "]"}], "]"}], "]"}]}], "}"}]}], "]"}], 
+         "\[IndentingNewLine]", ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "1", ",", 
+           RowBox[{"Length", "[", 
+            RowBox[{
+             RowBox[{"Transpose", "[", "data", "]"}], "[", 
+             RowBox[{"[", "1", "]"}], "]"}], "]"}]}], "}"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", "tempString"}]}], "\[IndentingNewLine]", "]"}]}],
+   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"GenerateRandomScenario", "[", 
+   RowBox[{
+   "housesNumber_", ",", "minMaxCoords_", ",", "minMaxAreas_", ",", 
+    "individualsScaling_", ",", "workZonesNumber_", ",", "scenarioNumber_"}], 
+   "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "xCoords", ",", "yCoords", ",", "areas", ",", "individuals", ",", 
+      "individualsNames", ",", "housesNames", ",", "wzXCoords", ",", 
+      "wzYCoords", ",", "workNames", ",", "xCoordsS", ",", "yCoordsS", ",", 
+      "areasS", ",", "individualsS", ",", "individualsNamesS", ",", 
+      "housesNamesS", ",", "workNamesS", ",", "groups"}], "}"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"xCoords", "=", 
+      RowBox[{"RandomInteger", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"-", 
+           RowBox[{"minMaxCoords", "[", 
+            RowBox[{"[", "1", "]"}], "]"}]}], ",", 
+          RowBox[{"minMaxCoords", "[", 
+           RowBox[{"[", "1", "]"}], "]"}]}], "}"}], ",", "housesNumber"}], 
+       "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"yCoords", "=", 
+      RowBox[{"RandomInteger", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"-", 
+           RowBox[{"minMaxCoords", "[", 
+            RowBox[{"[", "2", "]"}], "]"}]}], ",", 
+          RowBox[{"minMaxCoords", "[", 
+           RowBox[{"[", "2", "]"}], "]"}]}], "}"}], ",", "housesNumber"}], 
+       "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"areas", "=", 
+      RowBox[{"RandomInteger", "[", 
+       RowBox[{"minMaxAreas", ",", "housesNumber"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"individuals", "=", 
+      RowBox[{
+       RowBox[{"areas", "/", "individualsScaling"}], "//", "Floor"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"individualsNames", "=", 
+      RowBox[{"ToString", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"\"\<\\\"\>\"", "<>", 
+          RowBox[{"ToString", "[", "#", "]"}], "<>", "\"\<\\\"\>\""}], "&"}], 
+        "/@", 
+        RowBox[{"chars2", "[", 
+         RowBox[{"[", 
+          RowBox[{"1", ";;", 
+           RowBox[{"(", 
+            RowBox[{"individuals", "//", "Total"}], ")"}]}], "]"}], "]"}]}], 
+       "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"housesNames", "=", 
+      RowBox[{"ToString", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"\"\<\\\"\>\"", "<>", 
+          RowBox[{"ToString", "[", "#", "]"}], "<>", "\"\<\\\"\>\""}], "&"}], 
+        "/@", 
+        RowBox[{"chars", "[", 
+         RowBox[{"[", 
+          RowBox[{"1", ";;", "housesNumber"}], "]"}], "]"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"wzXCoords", "=", 
+      RowBox[{"RandomInteger", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"-", 
+           RowBox[{"minMaxCoords", "[", 
+            RowBox[{"[", "1", "]"}], "]"}]}], ",", 
+          RowBox[{"minMaxCoords", "[", 
+           RowBox[{"[", "1", "]"}], "]"}]}], "}"}], ",", "workZonesNumber"}], 
+       "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"wzYCoords", "=", 
+      RowBox[{"RandomInteger", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"-", 
+           RowBox[{"minMaxCoords", "[", 
+            RowBox[{"[", "2", "]"}], "]"}]}], ",", 
+          RowBox[{"minMaxCoords", "[", 
+           RowBox[{"[", "2", "]"}], "]"}]}], "}"}], ",", "workZonesNumber"}], 
+       "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"workNames", "=", 
+      RowBox[{"Range", "[", "workZonesNumber", "]"}]}], ";", 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{"xCoordsS", "=", 
+      RowBox[{"MathematicaToNLogoList", "[", "xCoords", "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"yCoordsS", "=", 
+      RowBox[{"MathematicaToNLogoList", "[", "yCoords", "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"areasS", "=", 
+      RowBox[{"MathematicaToNLogoList", "[", "areas", "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"individualsS", "=", 
+      RowBox[{"MathematicaToNLogoList", "[", "individuals", "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"individualsNamesS", "=", 
+      RowBox[{"MathematicaToNLogoList", "[", "individualsNames", "]"}]}], ";",
+      "\[IndentingNewLine]", 
+     RowBox[{"housesNamesS", "=", 
+      RowBox[{"MathematicaToNLogoList", "[", "housesNames", "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"workNamesS", "=", 
+      RowBox[{"MathematicaToNLogoList", "[", "workNames", "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"wzXCoords", "=", 
+      RowBox[{"MathematicaToNLogoList", "[", "wzXCoords", "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"wzYCoords", "=", 
+      RowBox[{"MathematicaToNLogoList", "[", "wzYCoords", "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"groups", "=", 
+      RowBox[{"MathematicaToNLogoList", "[", 
+       RowBox[{"Range", "[", "housesNumber", "]"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{"\"\<to set-coordinates\>\"", "<>", 
+      RowBox[{"ToString", "[", "scenarioNumber", "]"}], "<>", "\"\<\\n\>\"", "<>",
+       "\[IndentingNewLine]", "\"\<\\tset xcord \>\"", "<>", "xCoordsS", 
+      "<>", "\"\<\\n\>\"", "<>", "\[IndentingNewLine]", 
+      "\"\<\\tset ycord \>\"", "<>", "yCoordsS", "<>", "\"\<\\n\>\"", "<>", 
+      "\[IndentingNewLine]", "\"\<\\tset areas \>\"", "<>", "areasS", "<>", 
+      "\"\<\\n\>\"", "<>", "\[IndentingNewLine]", "\"\<\\tset groups \>\"", "<>",
+       "groups", "<>", "\"\<\\n\>\"", "<>", "\[IndentingNewLine]", 
+      "\"\<\\tset individuals \>\"", "<>", "individualsS", "<>", 
+      "\"\<\\n\>\"", "<>", "\[IndentingNewLine]", 
+      "\"\<\\tset names_listg \>\"", "<>", "individualsNamesS", "<>", 
+      "\"\<\\n\>\"", "<>", "\[IndentingNewLine]", 
+      "\"\<\\tset names_houses \>\"", "<>", "housesNamesS", "<>", 
+      "\"\<\\n\>\"", "<>", "\[IndentingNewLine]", 
+      "\"\<\\tset names_workZones \>\"", "<>", "workNamesS", "<>", 
+      "\"\<\\n\>\"", "<>", "\[IndentingNewLine]", "\"\<\\tset wxcord \>\"", "<>",
+       "wzXCoords", "<>", "\"\<\\n\>\"", "<>", "\[IndentingNewLine]", 
+      "\"\<\\tset wycord \>\"", "<>", "wzYCoords", "<>", "\"\<\\n\>\"", "<>", 
+      "\[IndentingNewLine]", "\"\<\\tset scenario_number \>\"", "<>", 
+      RowBox[{"ToString", "[", "scenarioNumber", "]"}], "<>", "\"\<\\n\>\"", "<>",
+       "\[IndentingNewLine]", "\"\<end\\n\>\""}]}]}], "\[IndentingNewLine]", 
+   "]"}]}]}], "Input",
+ CellChangeTimes->{{3.628000655610154*^9, 3.628000655877305*^9}, {
+  3.628000734567577*^9, 3.6280007347728367`*^9}, {3.63068089577686*^9, 
+  3.630680896192581*^9}, {3.630682594681467*^9, 3.6306825975965023`*^9}, {
+  3.630682666566208*^9, 3.630682672958205*^9}, {3.630682711798242*^9, 
+  3.6306827341075487`*^9}, {3.630682841104917*^9, 3.630682866481325*^9}, {
+  3.630683462694489*^9, 3.630683468867847*^9}, {3.630693130265691*^9, 
+  3.630693151757998*^9}, {3.630693220075553*^9, 3.630693225447365*^9}, {
+  3.630693260797984*^9, 3.6306932721559753`*^9}, {3.630693468442731*^9, 
+  3.6306934723382797`*^9}}],
+
+Cell[BoxData["\<\"/Users/chipdelmal/Google \
+Drive/54_UpTo30C/ParametersDefinition\"\>"], "Output",
+ CellChangeTimes->{
+  3.6280009085263357`*^9, 3.6306748222703943`*^9, 3.6306808976209583`*^9, 
+   3.630682598182178*^9, 3.630682673560421*^9, 3.630682734682024*^9, {
+   3.6306828434843817`*^9, 3.630682866881701*^9}, 3.6306834694762363`*^9, 
+   3.63069322645469*^9, 3.630693273659337*^9, 3.6306933628002872`*^9, 
+   3.630693473942484*^9, 3.6307655863794317`*^9, 3.633434272982233*^9, 
+   3.639129593436223*^9, 3.639253058487027*^9, 3.6442609068522873`*^9}]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Generate Random Scenarios", "Section",
+ CellChangeTimes->{{3.63067422824192*^9, 3.630674234111679*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"housesNumber", "=", 
+   RowBox[{"{", 
+    RowBox[{"10", ",", "15", ",", "20", ",", "25", ",", "30"}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"minMaxCoords", "=", 
+   RowBox[{"{", 
+    RowBox[{"150", ",", "100"}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"minMaxAreas", "=", 
+   RowBox[{"{", 
+    RowBox[{"100", ",", "500"}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"individualsScaling", "=", "100"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"workZonesNumber", "=", "2"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"scenarios", "=", "10"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"exportString", "=", 
+   RowBox[{"StringJoin", "@@", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"GenerateRandomScenario", "[", 
+       RowBox[{
+        RowBox[{"housesNumber", "[", 
+         RowBox[{"[", "i", "]"}], "]"}], ",", "minMaxCoords", ",", 
+        "minMaxAreas", ",", "individualsScaling", ",", "workZonesNumber", ",",
+         "i"}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "1", ",", 
+        RowBox[{"housesNumber", "//", "Length"}]}], "}"}]}], "]"}]}]}], 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"i", ",", "1", ",", "scenarios"}], "}"}], "]"}], ";"}], 
+   "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{"Export", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"ParentDirectory", "[", "]"}], "<>", 
+    "\"\</randomScenarios.nls\>\""}], ",", "exportString", ",", 
+   "\"\<Text\>\""}], "]"}]}], "Input",
+ CellChangeTimes->{{3.630674256426384*^9, 3.630674265160016*^9}, {
+  3.630674371654416*^9, 3.630674448450495*^9}, {3.630674580067996*^9, 
+  3.630674626312628*^9}, {3.630674743908148*^9, 3.630674787454936*^9}, {
+  3.6306748400217867`*^9, 3.6306748697078876`*^9}, {3.630674907143235*^9, 
+  3.630674912116665*^9}, {3.63067498472301*^9, 3.630674995576355*^9}, {
+  3.6306753087296457`*^9, 3.630675313124542*^9}, {3.630675344639859*^9, 
+  3.630675409774023*^9}, {3.630680108576295*^9, 3.6306801855572653`*^9}, {
+  3.6306809237001543`*^9, 3.630680928478033*^9}, {3.630682608789218*^9, 
+  3.630682609013084*^9}, {3.630682985784465*^9, 3.630683009252405*^9}, {
+  3.630765566098033*^9, 3.6307655809439907`*^9}, {3.63912962951789*^9, 
+  3.639129653139575*^9}, {3.6391296853855667`*^9, 3.6391297009254627`*^9}, {
+  3.6392530485885377`*^9, 3.639253050956812*^9}, {3.6442608268069887`*^9, 
+  3.644260832430696*^9}}],
+
+Cell[BoxData["\<\"to set-coordinates1\\n\\tset xcord (list -68 -142 94 -24 86 \
+36 -102 128 16 148)\\n\\tset ycord (list -41 86 -64 55 -4 72 -40 52 56 \
+-91)\\n\\tset areas (list 112 345 201 102 377 317 279 342 365 461)\\n\\tset \
+groups (list 1 2 3 4 5 6 7 8 9 10)\\n\\tset individuals (list 1 3 2 1 3 3 2 3 \
+3 4)\\n\\tset names_listg (list \\\"aa\\\" \\\"ab\\\" \\\"ac\\\" \\\"ad\\\" \
+\\\"ae\\\" \\\"af\\\" \\\"ag\\\" \\\"ah\\\" \\\"ai\\\" \\\"aj\\\" \\\"ak\\\" \
+\\\"al\\\" \\\"am\\\" \\\"an\\\" \\\"ao\\\" \\\"ap\\\" \\\"aq\\\" \\\"ar\\\" \
+\\\"as\\\" \\\"at\\\" \\\"au\\\" \\\"av\\\" \\\"aw\\\" \\\"ax\\\" \\\"ay\\\")\
+\\n\\tset names_houses (list \\\"AA\\\" \\\"AB\\\" \\\"AC\\\" \\\"AD\\\" \
+\\\"AE\\\" \\\"AF\\\" \\\"AG\\\" \\\"AH\\\" \\\"AI\\\" \\\"AJ\\\")\\n\\tset \
+names_workZones (list 1 2)\\n\\tset wxcord (list -37 52)\\n\\tset wycord \
+(list -88 -35)\\n\\tset scenario_number 1\\nend\\nto \
+set-coordinates2\\n\\tset xcord (list -49 0 74 75 -13 -28 13 -21 -2 118 8 62 \
+-20 -81 -10)\\n\\tset ycord (list 76 -41 -69 -76 -11 -58 -11 8 56 -35 44 -46 \
+56 31 -29)\\n\\tset areas (list 411 329 436 156 292 236 378 231 489 123 112 \
+106 453 101 313)\\n\\tset groups (list 1 2 3 4 5 6 7 8 9 10 11 12 13 14 \
+15)\\n\\tset individuals (list 4 3 4 1 2 2 3 2 4 1 1 1 4 1 3)\\n\\tset \
+names_listg (list \\\"aa\\\" \\\"ab\\\" \\\"ac\\\" \\\"ad\\\" \\\"ae\\\" \
+\\\"af\\\" \\\"ag\\\" \\\"ah\\\" \\\"ai\\\" \\\"aj\\\" \\\"ak\\\" \\\"al\\\" \
+\\\"am\\\" \\\"an\\\" \\\"ao\\\" \\\"ap\\\" \\\"aq\\\" \\\"ar\\\" \\\"as\\\" \
+\\\"at\\\" \\\"au\\\" \\\"av\\\" \\\"aw\\\" \\\"ax\\\" \\\"ay\\\" \\\"az\\\" \
+\\\"ba\\\" \\\"bb\\\" \\\"bc\\\" \\\"bd\\\" \\\"be\\\" \\\"bf\\\" \\\"bg\\\" \
+\\\"bh\\\" \\\"bi\\\" \\\"bj\\\")\\n\\tset names_houses (list \\\"AA\\\" \
+\\\"AB\\\" \\\"AC\\\" \\\"AD\\\" \\\"AE\\\" \\\"AF\\\" \\\"AG\\\" \\\"AH\\\" \
+\\\"AI\\\" \\\"AJ\\\" \\\"AK\\\" \\\"AL\\\" \\\"AM\\\" \\\"AN\\\" \\\"AO\\\")\
+\\n\\tset names_workZones (list 1 2)\\n\\tset wxcord (list -34 -31)\\n\\tset \
+wycord (list -14 -96)\\n\\tset scenario_number 2\\nend\\nto \
+set-coordinates3\\n\\tset xcord (list -149 140 -97 -44 -80 142 27 1 -47 -88 \
+52 105 -149 18 -89 -54 -73 -6 -26 -104)\\n\\tset ycord (list -12 77 47 -13 96 \
+34 -12 50 5 25 -83 71 -74 83 -62 91 2 -81 75 81)\\n\\tset areas (list 493 118 \
+332 368 155 141 141 122 386 188 258 194 114 320 110 232 406 219 322 \
+208)\\n\\tset groups (list 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 \
+20)\\n\\tset individuals (list 4 1 3 3 1 1 1 1 3 1 2 1 1 3 1 2 4 2 3 \
+2)\\n\\tset names_listg (list \\\"aa\\\" \\\"ab\\\" \\\"ac\\\" \\\"ad\\\" \
+\\\"ae\\\" \\\"af\\\" \\\"ag\\\" \\\"ah\\\" \\\"ai\\\" \\\"aj\\\" \\\"ak\\\" \
+\\\"al\\\" \\\"am\\\" \\\"an\\\" \\\"ao\\\" \\\"ap\\\" \\\"aq\\\" \\\"ar\\\" \
+\\\"as\\\" \\\"at\\\" \\\"au\\\" \\\"av\\\" \\\"aw\\\" \\\"ax\\\" \\\"ay\\\" \
+\\\"az\\\" \\\"ba\\\" \\\"bb\\\" \\\"bc\\\" \\\"bd\\\" \\\"be\\\" \\\"bf\\\" \
+\\\"bg\\\" \\\"bh\\\" \\\"bi\\\" \\\"bj\\\" \\\"bk\\\" \\\"bl\\\" \\\"bm\\\" \
+\\\"bn\\\")\\n\\tset names_houses (list \\\"AA\\\" \\\"AB\\\" \\\"AC\\\" \
+\\\"AD\\\" \\\"AE\\\" \\\"AF\\\" \\\"AG\\\" \\\"AH\\\" \\\"AI\\\" \\\"AJ\\\" \
+\\\"AK\\\" \\\"AL\\\" \\\"AM\\\" \\\"AN\\\" \\\"AO\\\" \\\"AP\\\" \\\"AQ\\\" \
+\\\"AR\\\" \\\"AS\\\" \\\"AT\\\")\\n\\tset names_workZones (list 1 \
+2)\\n\\tset wxcord (list 97 9)\\n\\tset wycord (list 31 52)\\n\\tset \
+scenario_number 3\\nend\\nto set-coordinates4\\n\\tset xcord (list 110 -106 \
+-5 133 116 84 50 60 29 87 102 -76 -86 137 9 -29 104 -19 87 -37 -108 19 118 \
+-122 99)\\n\\tset ycord (list 31 1 -11 -58 67 -80 14 5 -66 -32 -73 8 44 -41 \
+79 83 -13 74 11 -47 -36 -74 -34 65 32)\\n\\tset areas (list 146 212 381 232 \
+197 270 276 187 372 143 400 308 162 189 449 386 489 225 226 370 206 348 459 \
+167 408)\\n\\tset groups (list 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 \
+19 20 21 22 23 24 25)\\n\\tset individuals (list 1 2 3 2 1 2 2 1 3 1 4 3 1 1 \
+4 3 4 2 2 3 2 3 4 1 4)\\n\\tset names_listg (list \\\"aa\\\" \\\"ab\\\" \
+\\\"ac\\\" \\\"ad\\\" \\\"ae\\\" \\\"af\\\" \\\"ag\\\" \\\"ah\\\" \\\"ai\\\" \
+\\\"aj\\\" \\\"ak\\\" \\\"al\\\" \\\"am\\\" \\\"an\\\" \\\"ao\\\" \\\"ap\\\" \
+\\\"aq\\\" \\\"ar\\\" \\\"as\\\" \\\"at\\\" \\\"au\\\" \\\"av\\\" \\\"aw\\\" \
+\\\"ax\\\" \\\"ay\\\" \\\"az\\\" \\\"ba\\\" \\\"bb\\\" \\\"bc\\\" \\\"bd\\\" \
+\\\"be\\\" \\\"bf\\\" \\\"bg\\\" \\\"bh\\\" \\\"bi\\\" \\\"bj\\\" \\\"bk\\\" \
+\\\"bl\\\" \\\"bm\\\" \\\"bn\\\" \\\"bo\\\" \\\"bp\\\" \\\"bq\\\" \\\"br\\\" \
+\\\"bs\\\" \\\"bt\\\" \\\"bu\\\" \\\"bv\\\" \\\"bw\\\" \\\"bx\\\" \\\"by\\\" \
+\\\"bz\\\" \\\"ca\\\" \\\"cb\\\" \\\"cc\\\" \\\"cd\\\" \\\"ce\\\" \\\"cf\\\" \
+\\\"cg\\\")\\n\\tset names_houses (list \\\"AA\\\" \\\"AB\\\" \\\"AC\\\" \
+\\\"AD\\\" \\\"AE\\\" \\\"AF\\\" \\\"AG\\\" \\\"AH\\\" \\\"AI\\\" \\\"AJ\\\" \
+\\\"AK\\\" \\\"AL\\\" \\\"AM\\\" \\\"AN\\\" \\\"AO\\\" \\\"AP\\\" \\\"AQ\\\" \
+\\\"AR\\\" \\\"AS\\\" \\\"AT\\\" \\\"AU\\\" \\\"AV\\\" \\\"AW\\\" \\\"AX\\\" \
+\\\"AY\\\")\\n\\tset names_workZones (list 1 2)\\n\\tset wxcord (list 1 \
+-74)\\n\\tset wycord (list -100 0)\\n\\tset scenario_number 4\\nend\\nto \
+set-coordinates5\\n\\tset xcord (list -75 -103 111 -8 147 -79 -123 143 109 \
+-127 -132 -131 117 -99 4 -115 120 92 -63 -19 -70 50 53 58 -91 105 -141 51 61 \
+-140)\\n\\tset ycord (list 89 68 55 55 -33 87 95 -76 14 -89 -70 62 -33 -37 \
+-23 1 -22 -37 -93 1 73 35 40 -88 62 -50 -26 5 -44 19)\\n\\tset areas (list \
+184 431 130 199 422 449 379 123 276 216 146 213 202 384 422 331 176 171 258 \
+349 262 489 374 104 359 225 331 458 234 321)\\n\\tset groups (list 1 2 3 4 5 \
+6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 \
+30)\\n\\tset individuals (list 1 4 1 1 4 4 3 1 2 2 1 2 2 3 4 3 1 1 2 3 2 4 3 \
+1 3 2 3 4 2 3)\\n\\tset names_listg (list \\\"aa\\\" \\\"ab\\\" \\\"ac\\\" \\\
+\"ad\\\" \\\"ae\\\" \\\"af\\\" \\\"ag\\\" \\\"ah\\\" \\\"ai\\\" \\\"aj\\\" \\\
+\"ak\\\" \\\"al\\\" \\\"am\\\" \\\"an\\\" \\\"ao\\\" \\\"ap\\\" \\\"aq\\\" \\\
+\"ar\\\" \\\"as\\\" \\\"at\\\" \\\"au\\\" \\\"av\\\" \\\"aw\\\" \\\"ax\\\" \\\
+\"ay\\\" \\\"az\\\" \\\"ba\\\" \\\"bb\\\" \\\"bc\\\" \\\"bd\\\" \\\"be\\\" \\\
+\"bf\\\" \\\"bg\\\" \\\"bh\\\" \\\"bi\\\" \\\"bj\\\" \\\"bk\\\" \\\"bl\\\" \\\
+\"bm\\\" \\\"bn\\\" \\\"bo\\\" \\\"bp\\\" \\\"bq\\\" \\\"br\\\" \\\"bs\\\" \\\
+\"bt\\\" \\\"bu\\\" \\\"bv\\\" \\\"bw\\\" \\\"bx\\\" \\\"by\\\" \\\"bz\\\" \\\
+\"ca\\\" \\\"cb\\\" \\\"cc\\\" \\\"cd\\\" \\\"ce\\\" \\\"cf\\\" \\\"cg\\\" \\\
+\"ch\\\" \\\"ci\\\" \\\"cj\\\" \\\"ck\\\" \\\"cl\\\" \\\"cm\\\" \\\"cn\\\" \\\
+\"co\\\" \\\"cp\\\" \\\"cq\\\" \\\"cr\\\" \\\"cs\\\" \\\"ct\\\")\\n\\tset \
+names_houses (list \\\"AA\\\" \\\"AB\\\" \\\"AC\\\" \\\"AD\\\" \\\"AE\\\" \
+\\\"AF\\\" \\\"AG\\\" \\\"AH\\\" \\\"AI\\\" \\\"AJ\\\" \\\"AK\\\" \\\"AL\\\" \
+\\\"AM\\\" \\\"AN\\\" \\\"AO\\\" \\\"AP\\\" \\\"AQ\\\" \\\"AR\\\" \\\"AS\\\" \
+\\\"AT\\\" \\\"AU\\\" \\\"AV\\\" \\\"AW\\\" \\\"AX\\\" \\\"AY\\\" \\\"AZ\\\" \
+\\\"BA\\\" \\\"BB\\\" \\\"BC\\\" \\\"BD\\\")\\n\\tset names_workZones (list 1 \
+2)\\n\\tset wxcord (list -25 -92)\\n\\tset wycord (list -99 37)\\n\\tset \
+scenario_number 5\\nend\\n\"\>"], "Output",
+ CellChangeTimes->{
+  3.63068018654993*^9, 3.630680929336734*^9, {3.630682604695114*^9, 
+   3.6306826093719883`*^9}, 3.6306826759809628`*^9, 3.630682754928091*^9, 
+   3.630682846056429*^9, 3.630682898327292*^9, {3.630683001957295*^9, 
+   3.6306830094483*^9}, 3.630683471831038*^9, 3.630693248809495*^9, 
+   3.630693294212801*^9, 3.630693493173376*^9, {3.630765582626742*^9, 
+   3.630765587567421*^9}, 3.639129658603814*^9, 3.6391297012297544`*^9, 
+   3.6392530593518476`*^9, {3.644260901007551*^9, 3.6442609084706783`*^9}}],
+
+Cell[BoxData["\<\"/Users/chipdelmal/Google \
+Drive/54_UpTo30C/randomScenarios.nls\"\>"], "Output",
+ CellChangeTimes->{
+  3.63068018654993*^9, 3.630680929336734*^9, {3.630682604695114*^9, 
+   3.6306826093719883`*^9}, 3.6306826759809628`*^9, 3.630682754928091*^9, 
+   3.630682846056429*^9, 3.630682898327292*^9, {3.630683001957295*^9, 
+   3.6306830094483*^9}, 3.630683471831038*^9, 3.630693248809495*^9, 
+   3.630693294212801*^9, 3.630693493173376*^9, {3.630765582626742*^9, 
+   3.630765587567421*^9}, 3.639129658603814*^9, 3.6391297012297544`*^9, 
+   3.6392530593518476`*^9, {3.644260901007551*^9, 3.644260908502078*^9}}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1439, 801},
+WindowMargins->{{-2, Automatic}, {Automatic, 0}},
+FrontEndVersion->"10.4 for Mac OS X x86 (32-bit, 64-bit Kernel) (February 25, \
+2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 153, 2, 92, "Title"],
+Cell[CellGroupData[{
+Cell[757, 28, 133, 1, 65, "Chapter"],
+Cell[CellGroupData[{
+Cell[915, 33, 94, 1, 64, "Section"],
+Cell[CellGroupData[{
+Cell[1034, 38, 36203, 885, 2630, "Input"],
+Cell[37240, 925, 555, 8, 28, "Output"]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[37844, 939, 109, 1, 50, "Section"],
+Cell[CellGroupData[{
+Cell[37978, 944, 2522, 60, 182, "Input"],
+Cell[40503, 1006, 7587, 99, 1236, "Output"],
+Cell[48093, 1107, 620, 9, 28, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

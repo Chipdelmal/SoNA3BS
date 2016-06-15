@@ -1,0 +1,70 @@
+Root, setup, set-global-variables
+Root, setup, setup-terrain
+Root, setup, set-batch-evaluate-schoolfield-constants, evaluate-schoolfield-constants
+Root, setup, set-coordinates
+Root, setup, create-workZones-population
+Root, setup, create-humans-houses-breeding-landmarks, create-house-at-coordinates
+Root, setup, create-humans-houses-breeding-landmarks, create-landmark-and-breeding-zone-around-coordinates 
+Root, setup, create-humans-houses-breeding-landmarks, create-humans-at-houses
+Root, setup, create-humans-houses-breeding-landmarks, create-ovitrap-around-coordinates
+Root, setup, set-initial-population
+Root, setup, create-sugars-population
+Root, setup, create-sugarBaits-population
+Root, setup, create-ovitraps-population
+Root, setup, create-population
+Root, go, update_days_number
+Root, go, update_temperature
+Root, go, toggle_day_night
+Root, go, update_contacts_bools
+Root, go, update-warmup
+Root, go, update-larva-density-death-probability, larva-density-death-probability
+Root, go, update_egg_inhibition_probability, larva-density-egg-hatching-inhibition
+Root, go, act-aedesp, act-mosquito-day, act-egg, act-dead
+Root, go, act-aedesp, act-mosquito-day, act-egg, update_metabolic_rate
+Root, go, act-aedesp, act-mosquito-day, act-larva, act-dead
+Root, go, act-aedesp, act-mosquito-day, act-larva, update_metabolic_rate
+Root, go, act-aedesp, act-mosquito-day, act-pupa, act-dead
+Root, go, act-aedesp, act-mosquito-day, act-pupa, update_metabolic_rate
+Root, go, act-aedesp, act-mosquito-day, act-adult, probabilistic-natural-death
+Root, go, act-aedesp, act-mosquito-day, act-adult, act-hungry
+Root, go, act-aedesp, act-mosquito-day, act-adult, move-pseudo-random-walking
+Root, go, act-aedesp, act-mosquito-day, act-adult, act-reproductive, act-mate, mate-as-female, move-probabilistically-towards
+Root, go, act-aedesp, act-mosquito-day, act-adult, act-reproductive, act-mate, mate-as-male, move-probabilistically-towards
+Root, go, act-aedesp, act-mosquito-day, act-adult, act-reproductive, act-not-bloodfed-yet, act-bloodfeed
+Root, go, act-aedesp, act-mosquito-day, act-adult, act-reproductive, act-not-bloodfed-yet, move-pseudo-random-walking
+Root, go, act-aedesp, act-mosquito-day, act-adult, act-reproductive, act-bloodfed-yet, act-layEggs, move-probabilistically-towards
+Root, go, act-aedesp, act-mosquito-day, act-adult, act-reproductive, act-bloodfed-yet, act-layEggs, reproduce-sterile, reproduce
+Root, go, act-aedesp, act-mosquito-day, act-adult, act-reproductive, act-bloodfed-yet, act-layEggs, reproduce-wolbachia, reproduce
+Root, go, act-aedesp, act-mosquito-day, act-adult, act-reproductive, act-bloodfed-yet, act-layEggs, reproduce-ridl, reproduce
+Root, go, act-aedesp, act-mosquito-day, act-adult, act-reproductive, act-bloodfed-yet, act-layEggs, reproduce-fitness, reproduce
+Root, go, act-aedesp, act-mosquito-day, act-adult, act-reproductive, act-bloodfed-yet, act-layEggs, reproduce-normal, reproduce
+Root, go, act-aedesp, act-mosquito-day, act-adult, act-reproductive, act-bloodfed-yet, move-pseudo-random-walking
+Root, go, act-aedesp, act-mosquito-day, act-adult, act-reproductive, act-resetFemale
+Root, go, act-aedesp, act-mosquito-day, act-adult, act-feed
+Root, go, act-aedesp, act-mosquito-night, act-egg
+Root, go, act-aedesp, act-mosquito-night, act-egg, update_metabolic_rate
+Root, go, act-aedesp, act-mosquito-night, act-larva
+Root, go, act-aedesp, act-mosquito-night, act-larva, update_metabolic_rate
+Root, go, act-aedesp, act-mosquito-night, act-pupa
+Root, go, act-aedesp, act-mosquito-night, act-pupa, update_metabolic_rate
+Root, go, act-aedesp, act-mosquito-night, act-adult-night, move-pseudo-random-walking
+Root, go, act-aedesp, act-mosquito-night, act-adult-night, act-feed
+Root, go, act-aedesp, act-mosquito-night, act-adult-night, act-hungry
+Root, go, act-aedesp, act-dead
+Root, go, act-humanp, act-human-day, kill-mosquito-probabilistically, act-dead
+Root, go, act-humanp, act-human-day, act-human-worker, move-probabilistically-towards
+Root, go, act-humanp, act-human-day, act-human-non-worker, wander-towards-house
+Root, go, act-humanp, act-human-day, act-human-non-worker, wander-around-house
+Root, go, act-humanp, act-human-day, act-human-non-worker, exterminate-and-or-replace, breeding-site-replacement
+Root, go, act-humanp, act-human-day, act-human-non-worker, exterminate-and-or-replace, breeding-site-extermination, kill-breeding-site, move-probabilistically-towards
+Root, go, act-humanp, act-human-day, act-human-non-worker, exterminate-and-or-replace, breeding-site-extermination, fumigate, move-probabilistically-towards
+Root, go, act-humanp, act-human-night, wander-around-house
+Root, go, act-humanp, contact-human, human-contact-human
+Root, go, act-humanp, contact-house, human-contact-house
+Root, go, act-humanp, contact-house, human-contact-workZone
+Root, go, act-breedingZonesp
+Root, go, act-sugarsp
+Root, go, release-mosquitoesControl, release-control, release-control-mosquitos-program, release-wolbachia
+Root, go, release-mosquitoesControl, release-control, release-control-mosquitos-program, release-sterile
+Root, go, release-mosquitoesControl, release-control, release-control-mosquitos-program, release-fitness
+Root, go, release-mosquitoesControl, release-control, release-control-mosquitos-program, release-oxitec
