@@ -11,7 +11,8 @@ to go
   update_temperature;Updates the environment temperature and calculates the metabolic ratios of development
   ;toggle_weekend;Detects if a given day falls in weekend CURRENTLY UNUSED
   toggle_day_night;Detects if a given time period corresponds to day or night for behaviour purposes
-  ;update_contacts_bools;Obtains a sample of the current contacts in the simulation according to the sampling rate and stores it
+  update_contacts_bools;Obtains a sample of the current contacts in the simulation according to the sampling rate and stores it
+  ;update_max_eggs;Calculates the max number of eggs a female can lay according to density-dependent rules of behaviour
   update-warmup;Detects if the simulation's warmup period has been completed
   update-larva-density-death-probability
   update_egg_inhibition_probability

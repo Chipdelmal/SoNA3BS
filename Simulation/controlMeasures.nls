@@ -4,8 +4,7 @@
 ;fumigate :: Destroys all mosquitos in a radius of the breeding site
 ;replace-breeding-site :: Performs a breeding site population replacement in the closest breeding site
 ;breeding-site-replacement :: Replacement routine wrapper (can be called directly)
-;update-fogging-parameters :: Calculates the killing probability of the remaining insecticide
-;fogging-refill :: Fogs the environment
+;update-fogging-parameters :: 
 ;;****************************BODY**************************************************************************************************************
 to breeding-site-extermination
   if(random-bool (extermination-probability (count aedesp in-radius HUMAN_ACTION_RADIUS)))[set BREEDING_DESTROY? true]
@@ -32,7 +31,7 @@ to kill-breeding-site
       let aedesNearBreeding (aedesp in-radius ACTION_RADIUS)
       ask aedesNearBreeding with [life_stage < 3][die]
       set BREEDING_DESTROY? false
-      ;show "KILLED BREEDING SITE"
+      show "KILLED BREEDING SITE"
     ]
   ]
 end
@@ -46,7 +45,7 @@ to fumigate
       let aedesNearBreeding (aedesp in-radius ACTION_RADIUS)
       ask aedesNearBreeding [die]
       set BREEDING_DESTROY? false
-      ;show "FUMIGATED"
+      show "FUMIGATED"
     ]
   ]  
 end

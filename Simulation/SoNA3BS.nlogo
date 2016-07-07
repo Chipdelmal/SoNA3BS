@@ -1,5 +1,5 @@
 ;INCLUDEDFILES------------------------------------------------------------------------------------------------------
-__includes["GoogleMap_HET.nls" "turtlesCreation.nls" "schoolfield.nls" "go.nls" "reproductionRoutines.nls" "transitionsCreation.nls" "release.nls" "randomScenarios.nls" "auxiliaryFunctions.nls" "movement.nls" "xmlExport.nls" "humanBehaviour.nls" "mosquitoBehaviour.nls" "global.nls" "controlMeasures.nls"]
+__includes["GoogleMap_HET.nls" "turtlesCreation_HET.nls" "release_HET.nls" "schoolfield.nls" "go.nls" "reproductionRoutines.nls" "transitionsCreation.nls" "importMap.nls" "randomScenarios.nls" "auxiliaryFunctions.nls" "movement.nls" "xmlExport.nls" "humanBehaviour.nls" "mosquitoBehaviour.nls" "global.nls" "controlMeasures.nls"]
 ;BreedsDeclaration
 breed[houses house]
 breed[workZones workZone]
@@ -454,7 +454,7 @@ SWITCH
 800
 HUMAN_VISIT
 HUMAN_VISIT
-1
+0
 1
 -1000
 
@@ -585,7 +585,7 @@ SWITCH
 745
 RELEASE_OXITECH
 RELEASE_OXITECH
-0
+1
 1
 -1000
 
@@ -922,7 +922,7 @@ SWITCH
 906
 RELEASE_FOGGING
 RELEASE_FOGGING
-1
+0
 1
 -1000
 
@@ -946,6 +946,17 @@ PENS
 "RIDL" 1.0 0 -11221820 true "" "plot count aedesp with [oxitech? and life_stage = 3]"
 "Sterile" 1.0 0 -6459832 true "" "plot count aedesp with [sterile? and life_stage = 3]"
 "Fogging*100" 1.0 0 -955883 true "" "plot 100 * FOGGING_KILL_PROBABILITY"
+
+MONITOR
+398
+860
+501
+905
+NIL
+BITES_NUMBER
+17
+1
+11
 
 @#$#@#$#@
 # SoNA3BS :: Hector Manuel Sanchez Castellanos
@@ -1275,7 +1286,7 @@ NetLogo 5.0.3
 @#$#@#$#@
 @#$#@#$#@
 <experiments>
-  <experiment name="CatemacoBaseline_HET" repetitions="32" runMetricsEveryStep="false">
+  <experiment name="CatemacoBaseline_HET" repetitions="8" runMetricsEveryStep="false">
     <setup>setup
 XML-setup-name (word "GeneratedData/CatemacoBaseline_HET/CatemacoBaseline_HET ") 
 XML-init-write
@@ -1376,7 +1387,7 @@ XML-finish-write</final>
       <value value="144"/>
     </enumeratedValueSet>
   </experiment>
-  <experiment name="CatemacoWolbachia_HET" repetitions="32" runMetricsEveryStep="false">
+  <experiment name="CatemacoWolbachia_HET" repetitions="8" runMetricsEveryStep="false">
     <setup>setup
 XML-setup-name (word "GeneratedData/CatemacoWolbachia_HET/CatemacoWolbachia_HET ") 
 XML-init-write
@@ -1474,9 +1485,9 @@ XML-finish-write</final>
       <value value="144"/>
     </enumeratedValueSet>
   </experiment>
-  <experiment name="CatemacoRIDL_HET" repetitions="32" runMetricsEveryStep="false">
+  <experiment name="CatemacoOxitec_HET" repetitions="8" runMetricsEveryStep="false">
     <setup>setup
-XML-setup-name (word "GeneratedData/CatemacoRIDL_HET/CatemacoRIDL_HET ") 
+XML-setup-name (word "GeneratedData/CatemacoOxitec_HET/CatemacoOxitec_HET ") 
 XML-init-write
 XML-write-header "Novel Control Measures." "HMSC" "Replicating RIDL/Wolbachia papers in smaller scale."
 XML-write-parameters
@@ -1572,7 +1583,7 @@ XML-finish-write</final>
       <value value="144"/>
     </enumeratedValueSet>
   </experiment>
-  <experiment name="CatemacoFogging_HET" repetitions="32" runMetricsEveryStep="false">
+  <experiment name="CatemacoFogging_HET" repetitions="8" runMetricsEveryStep="false">
     <setup>setup
 XML-setup-name (word "GeneratedData/CatemacoFogging_HET/CatemacoFogging_HET ") 
 XML-init-write
@@ -1673,7 +1684,7 @@ XML-finish-write</final>
       <value value="144"/>
     </enumeratedValueSet>
   </experiment>
-  <experiment name="CatemacoBaseline_HOM" repetitions="32" runMetricsEveryStep="false">
+  <experiment name="CatemacoBaseline_HOM" repetitions="8" runMetricsEveryStep="false">
     <setup>setup
 XML-setup-name (word "GeneratedData/CatemacoBaseline_HOM/CatemacoBaseline_HOM ") 
 XML-init-write
@@ -1774,7 +1785,7 @@ XML-finish-write</final>
       <value value="144"/>
     </enumeratedValueSet>
   </experiment>
-  <experiment name="CatemacoWolbachia_HOM" repetitions="32" runMetricsEveryStep="false">
+  <experiment name="CatemacoWolbachia_HOM" repetitions="4" runMetricsEveryStep="false">
     <setup>setup
 XML-setup-name (word "GeneratedData/CatemacoWolbachia_HOM/CatemacoWolbachia_HOM ") 
 XML-init-write
@@ -1872,9 +1883,9 @@ XML-finish-write</final>
       <value value="144"/>
     </enumeratedValueSet>
   </experiment>
-  <experiment name="CatemacoRIDL_HOM" repetitions="32" runMetricsEveryStep="false">
+  <experiment name="CatemacoOxitec_HOM" repetitions="8" runMetricsEveryStep="false">
     <setup>setup
-XML-setup-name (word "GeneratedData/CatemacoRIDL_HOM/CatemacoRIDL_HOM ") 
+XML-setup-name (word "GeneratedData/CatemacoOxitec_HOM/CatemacoOxitec_HOM ") 
 XML-init-write
 XML-write-header "Novel Control Measures." "HMSC" "Replicating RIDL/Wolbachia papers in smaller scale."
 XML-write-parameters
@@ -1970,7 +1981,7 @@ XML-finish-write</final>
       <value value="144"/>
     </enumeratedValueSet>
   </experiment>
-  <experiment name="CatemacoFogging_HOM" repetitions="32" runMetricsEveryStep="false">
+  <experiment name="CatemacoFogging_HOM" repetitions="8" runMetricsEveryStep="false">
     <setup>setup
 XML-setup-name (word "GeneratedData/CatemacoFogging_HOM/CatemacoFogging_HOM ") 
 XML-init-write

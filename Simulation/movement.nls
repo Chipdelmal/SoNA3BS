@@ -5,7 +5,7 @@
 ;wander-towards-house :: Pseudo-random walk procedure in which a human moves around a given house(requires humans class with "group" variable and houses with "group" variable)**
 ;;****************************BODY**************************************************************************************************************
 to move-pseudo-random-walking [speed deviation_speed]
-  left random-integer-between -180 180
+  left random-integer-between -180 179
   let random-speed random-float speed
   forward random-speed
 end

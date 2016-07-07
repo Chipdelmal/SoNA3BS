@@ -1,4 +1,5 @@
 to set-global-variables
+  set BITES_NUMBER 0
 	set ACTION_RADIUS 0.5
 	set adultAgesList (list 15)
 	set AGE_DEVIATION 3240.
@@ -87,7 +88,7 @@ to set-global-variables
 	set TRANSITION_AGES_GLOBAL (list 0 865 1920 2401 3235 3720 12960)
 	set VISITING_COOLDOWN_MAX 28.8
 	set WARMUP_COMPLETED? false
-	set WARMUP_PERIOD 28800
+	set WARMUP_PERIOD 28800 
 	set WEEKEND? False
 	set WOLBACHIA_EFFECTIVITY 0.9
 	set WOLBACHIA_RELEASE_DELAY 2016
@@ -96,6 +97,7 @@ to set-global-variables
 	set WORKING_HOUR? True
 end
 globals[
+  BITES_NUMBER
 	ACTION_RADIUS
 	adultAgesList
 	AGE_DEVIATION

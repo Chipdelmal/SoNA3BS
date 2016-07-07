@@ -1,16 +1,16 @@
 ;;***************************HEADERS************************************************************************************************************
 ;act-mate :: Mating subroutines**
-;mate-as-female :: Female reproductive behaviour
-;mate-as-male :: Male reproductive behaviour
-;reproduce-sterile :: Reproduce as sterile
-;reproduce-wolbachia :: Reproduce as wolbachia
-;reproduce-fitness :: NA
-;reproduce-normal :: Regular reproduction
+;mate-as-female ::
+;mate-as-male ::
+;reproduce-sterile ::
+;reproduce-wolbachia ::
+;reproduce-fitness ::
+;reproduce-normal ::
 ;act-layEggs :: Female oviposition subroutines**
 ;act-bloodfeed :: Female bloodfeed subroutines**
 ;act-reproductive :: Mosquito actions while in adult reproductive state**
-;act-not-bloodfed-yet :: Female actions prior to bloodfeed
-;act-bloodfed-yet :: Female actions after bloodfeed
+;act-not-bloodfed-yet ::
+;act-bloodfed-yet ::
 ;;****************************BODY**************************************************************************************************************
 ;MATING ACTIONS---------------------------------------------------------------------------------------------------------------------------------
 to act-mate
@@ -94,7 +94,7 @@ to act-bloodfeed
   ifelse(closest_human != nobody)
   [
     move-probabilistically-towards closest_human (item 4 movement_speeds) MOSQUITO_MOVEMENT_FOCUS MOSQUITO_MOVEMENT_SPEED_DEVIATION;Move towards closest human
-    if ((distance closest_human) < MOSQUITO_ACTION_RADIUS);If a human is within the action radius feed on him
+    if (((distance closest_human) < MOSQUITO_ACTION_RADIUS) and (random-bool .75));If a human is within the action radius feed on him CHANGED!!!!!!!!!!!!!!!
     [
       ifelse(wolbachia? or fitness_selected?)
       [
@@ -103,12 +103,13 @@ to act-bloodfeed
       ][
         if(STORE_BITES and WARMUP_COMPLETED?)[set bitten_list lput (word "{" ([name] of closest_human) "," ticks "}") bitten_list]
       ]
+      set BITES_NUMBER (BITES_NUMBER + 1)
       set gonotrophic_cooldown floor (random-normal GONOTROPHICA1_TICKS_DURATION BLOODFEED_COOLDOWN_DISPERSION)
       set bloodfed? true
       set hunger 0
     ]
   ][
-     move-pseudo-random-walking (item 3 movement_speeds) MOSQUITO_MOVEMENT_SPEED_DEVIATION
+     move-pseudo-random-walking ((item 3 movement_speeds) / 10) MOSQUITO_MOVEMENT_SPEED_DEVIATION
   ]
 end
 ;REPRODUCTIVE ACTIONS-----------------------------------------------------------------------------------------------------------------------------
@@ -131,7 +132,7 @@ to act-not-bloodfed-yet
    ifelse(feeding_cooldown = 0)
    [act-bloodfeed]
    [
-       move-pseudo-random-walking (item 4 movement_speeds) MOSQUITO_MOVEMENT_SPEED_DEVIATION
+       move-pseudo-random-walking ((item 4 movement_speeds) / 10) MOSQUITO_MOVEMENT_SPEED_DEVIATION
        set feeding_cooldown (feeding_cooldown - 1)
    ]  
 end
@@ -141,7 +142,7 @@ to act-bloodfed-yet
    [act-layEggs]
    [
        ;;If the gonotrophic cooldown is not zero (undeveloped eggs) wait
-       move-pseudo-random-walking (item 4 movement_speeds) MOSQUITO_MOVEMENT_SPEED_DEVIATION
+       move-pseudo-random-walking ((item 4 movement_speeds) / 10) MOSQUITO_MOVEMENT_SPEED_DEVIATION
        set gonotrophic_cooldown (gonotrophic_cooldown - 1)
        ;ifelse(ovipositionCounter = 0)
        ;[set gonotrophic_cooldown (gonotrophic_cooldown + (item 3 tickPhasesTransitionRates))]

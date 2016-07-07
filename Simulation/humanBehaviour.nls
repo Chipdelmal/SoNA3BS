@@ -44,7 +44,7 @@ to act-human-non-worker
           set visiting? false
         ]
     ][
-      ;wander-around-house groupP (HUMAN_MOVEMENT_SPEED / 4) HUMAN_MOVEMENT_FOCUS HUMAN_MOVEMENT_SPEED_DEVIATION;
+      ;wander-around-house groupP (HUMAN_MOVEMENT_SPEED / 4) HUMAN_MOVEMENT_FOCUS HUMAN_MOVEMENT_SPEED_DEVIATION;MODIFIED!!!!!!!!!!!!!!!!!!!!!!
       exterminate-and-or-replace
     ]      
 end

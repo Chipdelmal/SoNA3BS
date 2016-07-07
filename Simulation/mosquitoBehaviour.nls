@@ -61,7 +61,7 @@ to act-feed
   ]
   [
     ;No sugar source in range. Random walk search.
-    move-pseudo-random-walking (item 3 movement_speeds) MOSQUITO_MOVEMENT_SPEED_DEVIATION
+    move-pseudo-random-walking ((item 3 movement_speeds) / 10) MOSQUITO_MOVEMENT_SPEED_DEVIATION
   ]
 end
 to act-resetFemale
@@ -78,7 +78,7 @@ to act-dead
     set life_stage_ticks_list (lput life_stage_ticks life_stage_ticks_list)
   ]
   ;if((female? = true) and (life_stage > 2) and (ovipositionCounter > 0))[set ovipositions_count lput ovipositionCounter ovipositions_count] ;INEFFICIENT!!!!!!!!!!!!!!!!!!!!!
-  ;if(life_stage > 2)[set adultAgesList (lput (convert_ratio_days_to_ticks (last life_stage_ticks_list)) adultAgesList)];INEFFICIENT!!!!!!!!!!!!!!!!!!!!!
+  ;if(life_stage > 2 and length life_stage_ticks_list > 0)[set adultAgesList (lput (convert_ratio_days_to_ticks (last life_stage_ticks_list)) adultAgesList)];INEFFICIENT!!!!!!!!!!!!!!!!!!!!!
   ;set mosquitoLifespan (lput (convert_ratio_days_to_ticks (sum life_stage_ticks_list)) mosquitoLifespan) ;INEFFICIENT!!!!!!!!!!!!!!!!!!!!!
   die
 end
@@ -127,7 +127,7 @@ to act-adult
       ifelse(maleReproductiveDelay != 0)
       [
          ;Pre-reproductive
-         ifelse(hunger < MOSQUITO_FEEDING_THRESHOLD)[move-pseudo-random-walking (item 3 movement_speeds) MOSQUITO_MOVEMENT_SPEED_DEVIATION][act-feed]
+         ifelse(hunger < MOSQUITO_FEEDING_THRESHOLD)[move-pseudo-random-walking ((item 3 movement_speeds) / 10) MOSQUITO_MOVEMENT_SPEED_DEVIATION][act-feed]
          set maleReproductiveDelay (maleReproductiveDelay - 1)
       ][
          ;Reproductive
@@ -141,7 +141,7 @@ end
 to act-adult-night
   if(random-bool MOSQUITO_NIGHT_MOVEMENT_PROBABILITY)
   [
-    move-pseudo-random-walking (item 4 movement_speeds) MOSQUITO_MOVEMENT_SPEED_DEVIATION
+    move-pseudo-random-walking ((item 4 movement_speeds) / 10) MOSQUITO_MOVEMENT_SPEED_DEVIATION
     if(hunger > MOSQUITO_FEEDING_THRESHOLD)[act-feed]
   ]
   act-hungry
