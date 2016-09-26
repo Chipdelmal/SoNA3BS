@@ -3,9 +3,18 @@ title: Documentation
 sidebar: mydoc_sidebar
 permalink: docMosquitoVariables.html
 folder: mydoc
-toc: false
+toc: true
 summary: "Mosquito Variables Descriptions"
 ---
+
+## Description
+
+Mosquitoes are the most complex class in our simulation. It is not difficult to envision why as they are the ones that transmit the diseases and because of that we payed special interest in the way their behaviours were modelled so that we could accomodate a wide array of biological and epidemiological scenarios.
+
+## Variables
+
+A brief description of the variables each mosquito individual contains follows. 
+The first line on each description contains if the value should be treated as a variable or constant (V or C respectively) and the type of the variable.
 
 ### age
 * V:Int 
