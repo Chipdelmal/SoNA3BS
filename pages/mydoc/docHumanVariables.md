@@ -1,15 +1,15 @@
 ---
-title: Documentation
+title: Humans
 sidebar: mydoc_sidebar
 permalink: docHumanVariables.html
 folder: mydoc
 toc: true
-summary: "Human Descriptions"
+summary: "Humans are extremely flexible in their behaviour to accomodate different epidemiological scenarios. Their movement and activity times help determine the patterns in which a disease can spread so their relevance in the process of can not be neglected."
 ---
 
-## General Behaviour
+## General Behaviour 
 
-Humans are extremely flexible in their behaviour. In general terms they are divided into households. Each person "belongs" to a household to which it returns each night (generally speaking). Humans are further divided into "workers" and "home-stayers". Worker humans go to their assigned work zone every day for a predetermined amount of time. Humans can be also programmed with a certain probability of visiting other households.
+In general terms humans are divided into households. Each person 'belongs' to a household to which it returns each night (generally speaking). Humans are further divided into 'workers' and 'home-stayers'. Worker humans go to their assigned work zone every day for a predetermined amount of time. Humans can be also programmed with a certain probability of visiting other households.
 
 ## Variables
 
