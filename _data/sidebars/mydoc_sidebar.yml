@@ -39,8 +39,12 @@ entries:
     - title: Overview
       url: /docOverview.html
       output: web, pdf
+    - title: Structure
+      url: /docFilesStructure.html
+      output: web, pdf
 
-  - title: Licensing and Publications
+
+  - title: Licensing, Publications and Funding
     output: web, pdf
     folderitems:
     - title: License
@@ -48,4 +52,7 @@ entries:
       output: web, pdf
     - title: Publications
       url: /licPublications.html
+      output: web, pdf
+    - title: Funding
+      url: /licFunding.html
       output: web, pdf
