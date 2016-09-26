@@ -4,12 +4,35 @@ sidebar: mydoc_sidebar
 permalink: docMosquitoVariables.html
 folder: mydoc
 toc: true
-summary: "Mosquito Variables Descriptions"
+summary: "Mosquitoes are the most complex class in our simulation. It is not difficult to envision why as they are the ones that transmit the diseases and because of that we payed special interest in the way their behaviours were modelled so that we could accomodate a wide array of biological and epidemiological scenarios."
 ---
 
-## Description
+## General Behaviour
+The following pseudo-code shows the general way adult mosquito individuals behave in the simulation.
 
-Mosquitoes are the most complex class in our simulation. It is not difficult to envision why as they are the ones that transmit the diseases and because of that we payed special interest in the way their behaviours were modelled so that we could accomodate a wide array of biological and epidemiological scenarios.
+{% highlight r %}
+if(is hungry?):
+    look for food and feed
+else:
+    if(is not female?):
+        if(reproductively ready?):
+            move towards mating zone
+        else:
+            rest
+    else:
+        if(has not mated?):
+            look for mate and copulate
+        else:
+            if(has not bloodfed?):
+                look for human and bloodfeed
+            else:
+                if(has not finished gonotrophic cycle?):
+                    rest
+                else:
+                    look for breeding zone and lay eggs
+update metabolic development
+{% endhighlight %}
+
 
 ## Variables
 

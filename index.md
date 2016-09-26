@@ -8,7 +8,11 @@ toc: false
 summary: SoNA3BS is an individual-based model created to simulate the population dynamics of Aedes aegypti mosquitoes. This project is being developed by the Bioinformatics research group of Tecnológico de Monterrey in collaboration with UC Berkeley.
 ---
 
-ADD VIDEO HERE!!!!
+## Cool Video Description
+
+<center>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/vghkosjhz_c?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+</center>
 
 ## Objectives
 
