@@ -8,6 +8,8 @@ toc: false
 summary: SoNA3BS is an individual-based model created to simulate the population dynamics of Aedes aegypti mosquitoes. This project is being developed by the Bioinformatics research group of Tecnológico de Monterrey in collaboration with UC Berkeley.
 ---
 
+ADD VIDEO HERE!!!!
+
 ## Objectives
 
 This simulation is being created to help guide global efforts to stop dengue epidemic processes. Although the main objective involves Dengue this simulation can be also used to help in Chikungunya, Zika and Yellow Fever control strategies as they are also spread by the Aedes aegypti mosquito.

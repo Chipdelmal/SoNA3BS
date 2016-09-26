@@ -36,11 +36,35 @@ entries:
   - title: Documentation
     output: web, pdf
     folderitems:
-    - title: Overview
+    - title: Description
       url: /docOverview.html
       output: web, pdf
-    - title: Structure
-      url: /docFilesStructure.html
+    - title: Mosquitoes
+      url: /docMosquitoVariables.html
+      output: web, pdf
+    - title: Humans
+      url: /docHumanVariables.html
+      output: web, pdf
+    - title: Houses
+      url: /docHouses.html
+      output: web, pdf
+    - title: BreedingZones
+      url: /docBreedingZones.html
+      output: web, pdf
+    - title: Ovitraps
+      url: /docOvitraps.html
+      output: web, pdf
+    - title: Sugar
+      url: /docSugar.html
+      output: web, pdf
+    - title: Sugar Baits
+      url: /docSugarBaits.html
+      output: web, pdf
+    - title: Work Zones
+      url: /docWorkZones.html
+      output: web, pdf
+    - title: Human Variables
+      url: /docHumanVariables.html
       output: web, pdf
 
 
