@@ -63,9 +63,10 @@ entries:
     - title: Work Zones
       url: /docWorkZones.html
       output: web, pdf
-    - title: Mosquito Control Interventions
-      url: /docMosquitoInterventions.html
+    - title: Human Variables
+      url: /docHumanVariables.html
       output: web, pdf
+
 
   - title: Licensing, Publications and Funding
     output: web, pdf

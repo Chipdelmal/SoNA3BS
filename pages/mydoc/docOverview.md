@@ -74,9 +74,28 @@ SoNA3BS currently contains eight types of objects that represent the different e
 
 ### Ovitraps
 
+## Interventions Description
+Some of the main <i>Aedes</i>-control interventions are included in the model.
+
+### ATSB
+Poisoned sugar sources are distributed through the environment to kill both male and female mosquitoes that are trying to feed to fulfill their energetic needs.
+
+### Fogging
+Application of insecticide to kill adult mosquitoes.
+
+### Wolbachia
+<i>Wolbachia</i> bacteria is added to analyse its transmission blocking effects in the population.
+
+### RIDL
+Release of Insects with Dominant Lethal Gene was modelled to see how effective it is in reducing mosquitoes population sizes.
+
+### Ovitraps
+Traps intended to kill females in the process of laying eggs along with the eggs they are attempting to oviposit.
+
 ## Functions Tree
 
 <center>
 {% include image.html file="functionsTree.png" alt="Functions Tree" caption="Function calls tree of the main simulation."  max-width=800 %}
 </center>
+
 

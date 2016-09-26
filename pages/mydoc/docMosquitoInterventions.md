@@ -3,7 +3,7 @@ title: Mosquito Control Interventions
 sidebar: mydoc_sidebar
 permalink: docMosquitoInterventions.html
 folder: mydoc
-toc: true
-summary: ""
+toc: false
+summary: "Some of the main mosquito-control interventions are included in the model."
 ---
 
