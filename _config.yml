@@ -11,7 +11,7 @@ site_title: SoNA3BS
 company_name: Héctor M. Sánchez C.
 # this appears in the footer
 
-github_editme_path:
+# github_editme_path:
 # if you're using Github, provide the basepath to the branch you've created for reviews, following the sample here. if not, leave this value blank.
 
 disqus_shortname: chipdelmal
@@ -28,12 +28,12 @@ exclude:
   - .gitignore
 # these are the files and directories that jekyll will exclude from the build
 
-feedback_subject_line: Jekyll documentation theme
+feedback_subject_line: SoNA3BS 
 
-feedback_email: tomjohnson1492@gmail.com
+feedback_email: sanchez.hmsc@itesm.mx
 # used as a contact email for the Feedback link in the top navigation bar
 
-# feedback_disable: true
+feedback_disable: true
 # if you uncomment the previous line, the Feedback link gets removed
 
 # feedback_text: "Need help?"
@@ -91,13 +91,9 @@ defaults:
 # these are defaults used for the frontmatter for these file types
 
 sidebars:
-- home_sidebar
 - mydoc_sidebar
-- product1_sidebar
-- product2_sidebar
-- other
 
-description: "Intended as a documentation theme based on Jekyll for technical writers documenting software and other technical products, this theme has all the elements you would need to handle multiple products with both multi-level sidebar navigation, tags, and other documentation features."
+description: "SoNA3BS"
 # the description is used in the feed.xml file
 
 # needed for sitemap.xml file only
