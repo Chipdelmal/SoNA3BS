@@ -74,3 +74,9 @@ SoNA3BS currently contains eight types of objects that represent the different e
 
 ### Ovitraps
 
+## Functions Tree
+
+<center>
+{% include image.html file="functionsTree.png" alt="Functions Tree" caption="Function calls tree of the main simulation."  max-width=800 %}
+</center>
+
