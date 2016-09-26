@@ -54,7 +54,7 @@ entries:
     - title: Ovitraps
       url: /docOvitraps.html
       output: web, pdf
-    - title: Sugar
+    - title: Sugar Sources
       url: /docSugar.html
       output: web, pdf
     - title: Sugar Baits

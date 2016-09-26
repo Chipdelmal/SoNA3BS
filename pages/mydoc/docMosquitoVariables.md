@@ -1,5 +1,5 @@
 ---
-title: Documentation
+title: Mosquitoes
 sidebar: mydoc_sidebar
 permalink: docMosquitoVariables.html
 folder: mydoc
