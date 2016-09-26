@@ -3,9 +3,15 @@ title: Documentation
 sidebar: mydoc_sidebar
 permalink: docHumanVariables.html
 folder: mydoc
-toc: false
+toc: true
 summary: "Human Descriptions"
 ---
+
+## General Behaviour
+
+Humans are extremely flexible in their behaviour. In general terms they are divided into households. Each person "belongs" to a household to which it returns each night (generally speaking). Humans are further divided into "workers" and "home-stayers". Worker humans go to their assigned work zone every day for a predetermined amount of time. Humans can be also programmed with a certain probability of visiting other households.
+
+## Variables
 
 ### replacementCooldown  
 * V:Int

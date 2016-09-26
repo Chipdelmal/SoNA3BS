@@ -4,10 +4,11 @@ sidebar: mydoc_sidebar
 permalink: docOverview.html
 folder: mydoc
 toc: true
-summary: "Documentation main page"
+summary: "This page contains a brief description of the way the model is divided and coded. More in-depth information of the specifics of the sub-parts can be found on the other sections of this documentation."
 ---
 
 ## Files Structure
+The simulation's folder contains al the files required for the model to run. These files are divided to accomodate different modular aspects of the simulation. A brief description of each one of these files follows.
 
 ### go
 Main simulation file
@@ -95,7 +96,7 @@ Traps intended to kill females in the process of laying eggs along with the eggs
 ## Functions Tree
 
 <center>
-{% include image.html file="functionsTree.png" alt="Functions Tree" caption="Function calls tree of the main simulation."  max-width=800 %}
+{% include image.html file="functionsTree.png" alt="Functions Tree" caption="Function calls tree of the main simulation."  max-width=850 %}
 </center>
 
 
