@@ -40,12 +40,12 @@ Our IBM requires "Mathematica v10" to run the experiments definitions and analys
 
 ## Installation Instructions
 
-* NetLogo: simply download the program from the project's download section (https://ccl.northwestern.edu/netlogo/)
-* SoNA3BS: just download the folder with the programs' files.
-* BehaviorSearch: download the program from the project's download section (http://behaviorsearch.org/) and please note that BehaviorSearch was created to run on previous versions of NetLogo so it might not be compatible with newer ones
-* Mathematica: unfortunately this is a non-free software so you have to buy it from Wolfram (http://www.wolfram.com/mathematica/)
-* PajaroLoco: follow the instructions on the following link (https://bitbucket.org/chipdelmal/pajarolocopublic)
-* BehaviourSpaceInterface: download and install following the same instruccions as the ones for PajaroLoco (https://bitbucket.org/chipdelmal/behaviorspaceinterface)
+* <a href="https://ccl.northwestern.edu/netlogo/">NetLogo</a>: simply download the program from the project's download section. 
+* <a href="https://github.com/Chipdelmal/SoNA3BS">SoNA3BS</a>: just download the folder with the programs' files.
+* <a href="http://behaviorsearch.org/">BehaviorSearch</a>: download the program from the project's download section and please note that BehaviorSearch was created to run on previous versions of NetLogo so it might not be compatible with newer ones.
+* <a href="http://www.wolfram.com/mathematica/">Mathematica</a>: unfortunately this is a non-free software so you have to buy it from Wolfram.
+* <a href="https://bitbucket.org/chipdelmal/pajarolocopublic">PajaroLoco</a>: follow the instructions on the following link.
+* <a href="https://bitbucket.org/chipdelmal/behaviorspaceinterface">BehaviourSpaceInterface</a>: download and install following the same instruccions as the ones for PajaroLoco.
 
 ## Important Notes
 
