@@ -8,7 +8,7 @@ summary: "Breeding zones represent the places where mosquitoes lay eggs in the e
 ---
 
 ## General Behaviour
-These objects are static for now. Possible extensions include: independent carrying capacity, water level, surface area, depth, etcetera.
+These objects are static for now. The carrying capacity is calculated as a whole counting all the breeding sites in the environment for now (see <a href="http://chipdelmal.github.io/SoNA3BS/licPublications.html">thesis document</a> for more details). This was mainly for computational cost reasons but could be extended in the future (possible extensions include: independent carrying capacity, water level, surface area, depth, etcetera).
 
 ## Variables
 NA

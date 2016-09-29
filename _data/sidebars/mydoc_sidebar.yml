@@ -63,6 +63,9 @@ entries:
     - title: Work Zones
       url: /docWorkZones.html
       output: web, pdf
+    - title: Exporting Files
+      url: /docExportingFiles.html
+      output: web, pdf
 
 
   - title: Licensing, Publications and Funding
