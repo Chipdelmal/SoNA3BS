@@ -80,3 +80,13 @@ In general terms humans are divided into households. Each person 'belongs' to a 
 ### contacted_workZone? 
 * V:Bool
 * Temporary flow variable to avoid contacts loop
+
+## Routines
+
+### Movement
+
+#### Random
+
+#### Targetted
+
+We have also included a targetted movement routine in our ABM. This routine is coded as a gravity model in which the probability of visiting a household depends on the areas of the houses over the distance between them. These probabilities are static and calculated when the map is detected from Google Maps. They are exported in the <a href="http://chipdelmal.github.io/SoNA3BS/docHouses.html">house</a> objects.

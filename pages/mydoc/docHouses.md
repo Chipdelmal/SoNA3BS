@@ -28,3 +28,7 @@ Houses are present mainly so that humans have a place to "belong" to. This is no
 ### name 
 * C:String
 * House name
+
+### gravity
+* C:IntList
+* Vector of probabilities humans that live in this household have of visiting other houses (based on a gravity model).

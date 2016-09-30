@@ -9,4 +9,4 @@ summary: "Publications of our IBM."
 
 
 * PLos Computational Biology
-* Tésis
+* Thesis
