@@ -104,3 +104,13 @@ to update_metabolic_rate [life_index]
     ]
   ]  
 end
+to-report weighted-random [ weights ]
+  let pick random-float sum weights
+  let total 0
+  let i 0
+  foreach weights [
+    set total total + ?
+    if pick < total [ report i ]
+    set i i + 1
+  ]
+end

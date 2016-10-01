@@ -1,5 +1,5 @@
 ;INCLUDEDFILES------------------------------------------------------------------------------------------------------
-__includes["GoogleMap_HET.nls" "turtlesCreation_HET.nls" "release_HET.nls" "schoolfield.nls" "go.nls" "reproductionRoutines.nls" "transitionsCreation.nls" "randomScenarios.nls" "auxiliaryFunctions.nls" "movement.nls" "xmlExport.nls" "humanBehaviour.nls" "mosquitoBehaviour.nls" "global.nls" "controlMeasures.nls"]
+__includes["GoogleMap.nls" "turtlesCreation_HET.nls" "release_HET.nls" "schoolfield.nls" "go.nls" "reproductionRoutines.nls" "transitionsCreation.nls" "randomScenarios.nls" "auxiliaryFunctions.nls" "movement.nls" "xmlExport.nls" "humanBehaviour.nls" "mosquitoBehaviour.nls" "global.nls" "controlMeasures.nls"]
 ;BreedsDeclaration
 breed[houses house]
 breed[workZones workZone]
@@ -69,6 +69,7 @@ houses-own[
   area ;; C:Int: Determines the house size and the number of persons that live in it
   persons ;; C:Int: Number of persons living in a given house
   name ;; C:String: House name
+  gravity ;; C:ListFloat: Probability to visit other households according to pre-computed gravity model
 ]
 breedingZones-own[
 ]

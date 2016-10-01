@@ -83,8 +83,8 @@ end
 to create-humans-houses-breeding-landmarks
   let house_name_counter 0
   set human_name_counter 0
-  (foreach xcord ycord areas groups individuals[
-    create-house-at-coordinates (?1) (?2) (?3) (?4) (?5) (item house_name_counter names_houses)
+  (foreach xcord ycord areas groups individuals gravities[
+    create-house-at-coordinates (?1) (?2) (?3) (?4) (?5) (item house_name_counter names_houses) (?6)
     set house_name_counter (house_name_counter + 1)
     create-landmark-and-breeding-zone-around-coordinates (?1) (?2)
     create-humans-at-houses (?4) (?5)
@@ -242,7 +242,7 @@ to create-population
   ]
 end
 
-to create-house-at-coordinates [xcoord ycoord areaIn groupIn personsIn nameIn]
+to create-house-at-coordinates [xcoord ycoord areaIn groupIn personsIn nameIn gravityIn]
   create-houses 1[
     setxy xcoord ycoord
     set area areaIn
@@ -253,6 +253,7 @@ to create-house-at-coordinates [xcoord ycoord areaIn groupIn personsIn nameIn]
     set shape "house"
     set size 1.2 * (floor (area / 100))
     set name nameIn
+    set gravity gravityIn
   ]
 end
 to create-landmark-and-breeding-zone-around-coordinates [xcoord ycoord]

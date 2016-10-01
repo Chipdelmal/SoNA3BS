@@ -218,6 +218,7 @@ globals[
 	wycord
 	xcord
 	ycord
+gravities
 ]
 to set-initial-population
  	set INITIAL_POPULATION (round (POPULATION_CAP_THRESHOLD * 0.4))
