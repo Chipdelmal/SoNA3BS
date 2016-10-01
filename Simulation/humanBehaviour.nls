@@ -32,13 +32,14 @@ to act-human-non-worker
    if(random-bool HUMAN_VISITING_PROBABILITY)[
        set visiting? true
        let personGroup groupP
-       ;;Random house visit behaviour!!!!!!
-       ;let visitingHouse (random length groups - 1)
-       ;;Gravity model visit behaviour!!!!!
-       let housesGravityList ([gravity] of (one-of houses with [group = personGroup]))
-       let visitingHouse ((weighted-random housesGravityList) + 1)
-       ;;Common to both visit patterns
-       set visitingHouseNumber visitingHouse
+       ifelse(GRAVITY_VISIT?)[
+         ;;Gravity model visit behaviour!!!!!
+         let housesGravityList ([gravity] of (one-of houses with [group = personGroup]))
+         set visitingHouseNumber ((weighted-random housesGravityList) + 1)
+       ][
+         ;;Random house visit behaviour!!!!!!
+         set visitingHouseNumber (random length groups - 1)
+       ]
     ]
     ifelse(visiting? = true and HUMAN_VISIT)
     [
