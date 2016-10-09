@@ -42,16 +42,16 @@ Mosquito population control intervention routines. Contains the behaviour of eac
 Interventions that deal with mosquitos releases. These functions control how often releases occur and their spatial distribution.
 
 ### turtlesCreation
-Instantiation of the individuals in the environment. 
+Instantiation of the individuals in the environment. This routine parses the information on other files like the maps ones and creates agents at the required locations.
 
 ### xmlExport
-Routines to export experiments' data into XML format
+Routines to export experiments' data into XML format for further analysis (see [exporting files](./docExportingFiles.html) for more detail).
 
 ### humanBehaviour 
-Human movement and 
+Human movement and activities.
 
 ### mosquitoBehaviour
-Mosquitos general life routines
+Mosquitos general life routines. This is the most complex file of the simulation and is explained in detail in [mosquitoes documentation](./docMosquitoVariables.html).
 
 ### reproductionRoutines
 Mosquitos mating and reproductive routines
