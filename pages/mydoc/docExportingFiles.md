@@ -9,4 +9,46 @@ summary: "SoNA3BS includes exporting routines that make the analysis of simulati
 
 ## General Behaviour
 
-## Variables
+## XML Specification
+
+### Header
+
+Contains a description of the experiment.
+
+### Parameters
+
+Parameters used for a specific setting of the experiment.
+
+#### parameter
+
+#### independent
+
+### Body
+
+Contains the data exported every <i>N</i> ticks of the simulation. It is usually meant to be used for population dynamics data.
+
+#### tick
+
+##### output
+
+
+### Tail
+
+Information stored when the simulation finishes. Usually used for bites and contacts lists.
+
+#### bitesList
+
+{% highlight r %}
+    [
+        {[{mID1} {hbIDa,t1} {hbIDb,t2} ... {hbIDz,tn}]} 
+        {[{mID2} {hbIDa,t1} {hbIDb,t2} ... {hbIDz,tn}]} 
+        ...
+        {[{mIDk} {hbIDa,t1} {hbIDb,t2} ... {hbIDz,tn}]} 
+    ]
+{% endhighlight %}
+
+#### contactsList
+
+#### contactHousesList
+
+#### controlReleasesList

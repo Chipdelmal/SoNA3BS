@@ -11,37 +11,38 @@ summary: "This page contains a brief description of the way the model is divided
 The simulation's folder contains al the files required for the model to run. These files are divided to accomodate different modular aspects of the simulation. A brief description of each one of these files follows.
 
 ### go
-Main simulation file
+Main simulation file. This file contains the top-layer routines to be called by the simulation in order to run.
+Start here if any specific behaviour is to be changed/analysed.
 
 ### global
-Global simulation parameters (exported from "ParameterExport.nb")
+Global simulation parameters. This file contains all the biological/behavioural parameters that are required to control the agents' behaviours. In an ideal scenario these parameters are exported from "ParameterExport.nb" as this notebook contains all the function fits and scaling factors required for the simulation to run properly.
 
 ### auxiliaryFunctions.nls
-Functions that perform general unspecific activities
-
-### GoogleMap_HET.nls
-Google Map processed spatial layout in "Catemaco, Veracruz"
-
-### GoogleMap_HOM.nls
-Artificially homogeneous spatial layout with same demographic characteristics as GoogleMap_HET
+Functions that perform general unspecific activities like random sampling, day-night cycles, contact updates, etcetera; that are not related to a particular agent type.
 
 ### randomScenarios.nls
-Five different artificially uniform generated scenarios for testing purposes
+Five different artificially uniformly distributed generated spatial scenarios. These settings can be created with routines included in "RandomMapGeneration.nb". 
+
+### GoogleMap_HET.nls
+Google Map processed spatial layout in "Catemaco, Veracruz". This map was obtained using the routine included in "MapFromGoogle.nb" for houses detection. The algorithm detects squares in a given map image and assigns them spatial coordinates along with a number of persons that live in the "house" according to its detected surface area.
+
+### GoogleMap_HOM.nls
+Artificially homogeneous spatial layout with same demographic characteristics as GoogleMap_HET but with all spatial variables removed. All houses and persons are concentrated at the center of the map and breeding/mating sites all are located in their vicinity.
 
 ### movement
-Pseudo-Random walking routines for agents
+Pseudo-Random walking routines for agents. All the agents have two basic movement behaviours: targetted movement (movement with a definite direction) and random movement (movement without any aim or goal).
  
 ### schoolfield
-Metabolic development model for mosquitos
+Metabolic development model for mosquitos. This model controls the way mosquitoes develop through their life stages. It depends on temperature and a set of biological parameters that are specific to the mosquito species being simulated.
 
 ### controlMeasures
-Population control intervention routines
+Mosquito population control intervention routines. Contains the behaviour of each one of the mosquito population interventions and how they affect the agents.
 
 ### release
-Interventions that deal with mosquitos releases with 
+Interventions that deal with mosquitos releases. These functions control how often releases occur and their spatial distribution.
 
 ### turtlesCreation
-Instantiation of the individuals in the environment
+Instantiation of the individuals in the environment. 
 
 ### xmlExport
 Routines to export experiments' data into XML format
@@ -95,8 +96,10 @@ Traps intended to kill females in the process of laying eggs along with the eggs
 
 ## Functions Tree
 
+The following figure shows the way the functions are called in the simulation for mosquito behaviour. This is the standard behaviour of the simulation although it might be extended or certain processes can be deactivated as required for a certain study.
+
 <center>
-{% include image.html file="functionsTree.png" alt="Functions Tree" caption="Function calls tree of the main simulation."  max-width=850 %}
+    <img src="./images/functionsTree.png" style="width: 100%;">
 </center>
 
 
