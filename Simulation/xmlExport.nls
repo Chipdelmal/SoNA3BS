@@ -46,9 +46,9 @@ to XML-write-tick-outputs [every-N-step]
         XML-write-entry "\t\t\t" "output" "LarvaDeathByDensity" LARVA_DEATH_DENSITY_DEATH_PROBABILITY
         XML-write-entry "\t\t\t" "output" "Temperature" tickTemperature
         ;XML-write-entry "\t\t\t" "output" "Food" (sum [food] of sugars)
-        ;XML-write-entry "\t\t\t" "output" "MeanOvipositionCount" (mean ovipositions_count)
-        ;XML-write-entry "\t\t\t" "output" "MeanAdultLifespan" (mean adultAgesList)
-        ;XML-write-entry "\t\t\t" "output" "MeanLifespan" (mean mosquitoLifespan)
+        XML-write-entry "\t\t\t" "output" "MeanOvipositionCount" (mean ovipositions_count)
+        XML-write-entry "\t\t\t" "output" "MeanAdultLifespan" (mean adultAgesList)
+        XML-write-entry "\t\t\t" "output" "MeanLifespan" (mean mosquitoLifespan)
         ;XML-write-entry "\t\t\t" "output" "FoodAvailable" (sum [food] of sugars)
         ;XML-write-entry "\t\t\t" "output" "BreedingZones" (count breedingZones)
         XML-write-entry "\t\t\t" "output" "FemalePopulation" (count aedesp with[female? = True and life_stage = 3])

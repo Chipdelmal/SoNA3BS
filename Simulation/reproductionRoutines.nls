@@ -47,7 +47,7 @@ to act-layEggs
   move-probabilistically-towards closest_reproZone (item 4 movement_speeds) MOSQUITO_MOVEMENT_FOCUS MOSQUITO_MOVEMENT_SPEED_DEVIATION;Move towards closest breeding zone
   if((distance closest_reproZone) < MOSQUITO_ACTION_RADIUS)
   [
-      ;if(([breed] of closest_reproZone = ovitraps) and (random-bool DEATH_BY_OVITRAP_PROBABILITY))[act-dead];show "DEATH BY OVITRAP" act-dead]
+      if(([breed] of closest_reproZone = ovitraps) and (random-bool DEATH_BY_OVITRAP_PROBABILITY))[act-dead];show "DEATH BY OVITRAP" act-dead]
       ;;Case selector-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-
       ifelse(sterileMate? = true)[set case 0][
         ifelse((wolbachia? or wolbachiaMate?))[set case 1][

@@ -899,7 +899,7 @@ HUMAN_VISITING_PROBABILITY
 HUMAN_VISITING_PROBABILITY
 0
 1
-0.10416
+0.05908
 .00028
 1
 NIL
@@ -966,7 +966,7 @@ SWITCH
 833
 GRAVITY_VISIT?
 GRAVITY_VISIT?
-0
+1
 1
 -1000
 
@@ -2077,6 +2077,113 @@ XML-finish-write</final>
     </enumeratedValueSet>
     <enumeratedValueSet variable="HUMAN_VISIT">
       <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="STORE_BITES">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="STORE_HOUSE_CONTACT">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="STORE_HUMAN_CONTACT">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="STORE_CONTROL_RELEASES">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="EXPORT_RATE">
+      <value value="144"/>
+    </enumeratedValueSet>
+  </experiment>
+  <experiment name="HumanVisitingNG_000000" repetitions="8" runMetricsEveryStep="false">
+    <setup>setup
+XML-setup-name (word "GeneratedData/000000VisitNG/000000VisitNG ") 
+XML-init-write
+XML-write-header "Human Movement." "HMSC" ""
+XML-write-parameters
+XML-init-write-ticks-body</setup>
+    <go>go
+XML-write-tick-outputs EXPORT_RATE</go>
+    <final>ask humans[die-human]
+XML-finish-write-ticks-body
+XML-init-write-tail-body
+XML-write-tail-outputs
+XML-finish-write-tail-body
+XML-finish-write</final>
+    <timeLimit steps="125000"/>
+    <enumeratedValueSet variable="HUMAN_VISITING_PROBABILITY">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="GRAVITY_VISIT?">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="RELEASE_WOLBACHIA">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="RELEASE_STERILE">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="RELEASE_FOGGING">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="RELEASE_OXITECH">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="RELEASE_FITNESS">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="RELEASE_NEUTRAL">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="TEMPERATURE_TYPE">
+      <value value="&quot;Constant&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="CONSTANT_TEMPERATURE">
+      <value value="25"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="BreedingZonesNumber">
+      <value value="&quot;GoogleMap&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="FOOD_DYNAMICS?">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="FUMIGATION">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="BREEDING_EXTERMINATION">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="BREEDING_REPLACEMENT_WOLBACHIA">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="BREEDING_REPLACEMENT_STERILE">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="BREEDING_REPLACEMENT_OXITECH">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="BREEDING_REPLACEMENT_FITNESS">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="OVITRAPS?">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="SUGAR_BAITS?">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="OXITECH_RATIO">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="FITNESS_SELECTED_RATIO">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="WOLBACHIA_RATIO">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="STERILE_RATIO">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="HUMAN_VISIT">
+      <value value="true"/>
     </enumeratedValueSet>
     <enumeratedValueSet variable="STORE_BITES">
       <value value="true"/>

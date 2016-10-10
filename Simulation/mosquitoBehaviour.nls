@@ -49,6 +49,7 @@ to act-feed
       ifelse(is-sugarBait? closest_sugar)[
         ;Bait routine
         set hunger 0
+        act-dead
       ][
         ;Sugar routine
         if(([food] of closest_sugar) > 0)
