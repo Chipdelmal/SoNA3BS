@@ -12,4 +12,7 @@ summary: "Poisoned sugar sources to kill mosquitoes that are trying to feed on t
 For the time being sugar baits have a simple static behaviour in which if a mosquito sugar feeds on them the individual dies. This behaviour can be extended to accomodate efficacy and efficacy decay.
 
 ## Variables
-NA
+
+### food
+* V:Int
+* Available food in this sugar bait

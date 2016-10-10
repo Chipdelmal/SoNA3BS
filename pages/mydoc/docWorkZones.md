@@ -10,4 +10,8 @@ summary: "Places where 'worker' humans spend most of their days."
 ## General Behaviour
 
 ## Variables
-NA
+
+
+### name
+* C:String
+* Work zone name

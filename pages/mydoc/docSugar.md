@@ -10,4 +10,7 @@ summary: "Sources where mosquitoes can feed on sugar to fulfill their energetic 
 ## General Behaviour
 
 ## Variables
-NA
+
+### food
+* V:Int
+* Available food in this sugar bait
