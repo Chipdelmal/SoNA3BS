@@ -61,7 +61,7 @@ This is just for reference. For a more updated and thorough version look at the 
 ## Contact
 
 * mail: sanchez.hmsc@itesm.com
-* website: https://sites.google.com/site/sona3bs/ 
+* website: http://chipdelmal.github.io/SoNA3BS/
 
 ## Licence
 
