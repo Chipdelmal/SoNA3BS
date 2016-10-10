@@ -9,5 +9,7 @@ summary: "Traps to kill female mosquitoes attempting to lay eggs in aquatic envi
 
 ## General Behaviour
 
+Similar to the case of sugar baits ovitraps have an ideal behaviour coded for now. They work with a given efficacy permanently and kill the female before it lays eggs. This behaviour will be extended in the future to make it more realistic.
+
 ## Variables
 NA
