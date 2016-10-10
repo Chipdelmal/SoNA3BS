@@ -85,6 +85,18 @@ In general terms humans are divided into households. Each person 'belongs' to a 
 
 ### Movement
 
+As mentioned in the overview humans can move in a targeted or random pattern. Even the targetted movement can have a given amount of "noise" added to cover scenarios in which humans do not go straight to a given location.
+
+### Behaviours
+
+#### Wander Behaviour
+
+People can be set to move around a given place to mimic children playing around a house or persons that stay at home taking care of their house.
+
+#### Working Behaviour
+
+Another behaviour that can be activated is the one of people that go to a definite location to work.
+
 #### Visiting Behaviour
 
 Humans can be allowed to visit other houses if required. For now the simulation has two implemented visiting behaviours.

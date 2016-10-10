@@ -54,7 +54,7 @@ Human movement and activities.
 Mosquitos general life routines. This is the most complex file of the simulation and is explained in detail in [mosquitoes documentation](./docMosquitoVariables.html).
 
 ### reproductionRoutines
-Mosquitos mating and reproductive routines
+Mosquitos mating and reproductive routines. This file is separate from the mosquito behaviour one as mating routines present their own complexities.
 
 ## Objects
 
@@ -62,19 +62,35 @@ SoNA3BS currently contains eight types of objects that represent the different e
 
 ### Mosquitoes
 
+These are the most complicated agents of the simulation. Their behaviour can be extended and modified but care must be taken in doing so as slight changes in parameters might have big impacts due to emergent behaviours and sensitivity.
+
 ### Humans
+
+Humans have been programmed with basic behaviours of movement and routines for both habitat destruction and intervention releases can be activated.
 
 ### Houses
 
+Each person has a designated house to which they go back to every night. The "contacts" with these houses can be tracked and stored for further analysis.
+
 ### Breeding Zones
+
+These are the reopositories where mosquitoes lay their eggs. For now they are containers but their behaviour can be extended to accomodate differential carrying capacity and other heterogeneous scenarios.
 
 ### Work Zones
 
+Similar to houses. Each work zone attracts persons who work there and they attend their work zone during daytime.
+
 ### Sugar Sources
+
+Agents that produce sugar for mosquitoes to feed upon.
 
 ### Sugar Baits
 
+Traps that kill mosquitoes who feed on them.
+
 ### Ovitraps
+
+Traps that kill females that lay eggs on them along with the eggs they have oviposited there.
 
 ## Interventions Description
 Some of the main <i>Aedes</i>-control interventions are included in the model.
