@@ -3,7 +3,7 @@ title: Houses
 sidebar: mydoc_sidebar
 permalink: docHouses.html
 folder: mydoc
-toc: false
+toc: true
 summary: "Houses Variables Descriptions"
 ---
 
