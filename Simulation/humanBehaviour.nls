@@ -21,8 +21,8 @@ to act-human-worker
    ifelse(goWork? = TRUE)
    [
        ;;If it is time to go to work
-       ;move-probabilistically-towards (min-one-of workZones [distance myself]) HUMAN_MOVEMENT_SPEED HUMAN_MOVEMENT_FOCUS HUMAN_MOVEMENT_SPEED_DEVIATION
-       ;if(any? workZones in-radius HUMAN_HOUSE_CONTACT_RADIUS)[set goWork? FALSE]
+       move-probabilistically-towards (min-one-of workZones [distance myself]) HUMAN_MOVEMENT_SPEED HUMAN_MOVEMENT_FOCUS HUMAN_MOVEMENT_SPEED_DEVIATION
+       if(any? workZones in-radius HUMAN_HOUSE_CONTACT_RADIUS)[set goWork? FALSE]
    ][
        ;;If it is time to stay home
    ]

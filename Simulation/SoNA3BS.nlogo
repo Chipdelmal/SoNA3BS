@@ -178,24 +178,22 @@ true
 true
 "" ""
 PENS
-"TotalPopulation/10" 1.0 0 -16777216 true "" "plot (count aedesp / 10)"
 "Sterile" 1.0 0 -13840069 true "" "plot count aedesp with [sterile? = true]"
 "MatedSterile" 1.0 0 -8330359 true "" "plot count aedesp with [sterileMate? = true]"
-"Wolbachia" 1.0 0 -2674135 true "" "plot count aedesp with [wolbachia? = true]"
-"MatedWolbachia" 1.0 0 -1604481 true "" "plot count aedesp with [wolbachiaMate? = true]"
-"FitnessSelected" 1.0 0 -8630108 true "" "plot count aedesp with [fitness_selected? = true]"
-"MatedFitnessSelected" 1.0 0 -5204280 true "" "plot count aedesp with [fitness_selectedMate? = true]"
-"Oxitech" 1.0 0 -8431303 true "" "plot count aedesp with [oxitech? = true]"
-"MatedOxitech" 1.0 0 -3889007 true "" "plot count aedesp with [oxitechMate? = true]"
+"Wolbachia" 1.0 0 -2674135 true "" "plot count aedesp with [wolbachia? = true and life_stage = 3]"
+"MatedWolbachia" 1.0 0 -1604481 true "" "plot count aedesp with [wolbachiaMate? = true and life_stage = 3]"
+"RIDL" 1.0 0 -8431303 true "" "plot count aedesp with [oxitech? = true and life_stage = 3]"
+"MatedRIDL" 1.0 0 -3889007 true "" "plot count aedesp with [oxitechMate? = true and life_stage = 3]"
 "MatedFemales" 1.0 0 -7500403 true "" "plot count aedesp with [(mated? = true) and (female? = true)]"
 "Adults" 1.0 0 -6759204 true "" "plot count aedesp with[life_stage = 3]"
 "AdultFemales" 1.0 0 -955883 true "" "plot (count aedesp with[female? = True and life_stage = 3])"
+"Fogging" 1.0 0 -14835848 true "" "plot FOGGING_KILL_PROBABILITY"
 
 SLIDER
 1018
-809
+822
 1163
-842
+855
 STERILE_RATIO
 STERILE_RATIO
 0
@@ -208,9 +206,9 @@ HORIZONTAL
 
 SLIDER
 1018
-841
+854
 1163
-874
+887
 WOLBACHIA_RATIO
 WOLBACHIA_RATIO
 0
@@ -305,10 +303,10 @@ WEEKEND?
 10
 
 BUTTON
-1278
-647
-1438
-680
+578
+629
+772
+662
 Release 20% Sterile
 release-control-mosquitos-program 0 0 (floor INITIAL_POPULATION * .2) \"Sterile\"
 NIL
@@ -322,10 +320,10 @@ NIL
 1
 
 BUTTON
-1278
-679
-1438
-712
+771
+629
+948
+662
 Release 20% Wolbachia
 release-control-mosquitos-program 0 0 (floor INITIAL_POPULATION * .2) \"Wolbachia\"
 NIL
@@ -340,9 +338,9 @@ NIL
 
 SLIDER
 1163
-810
+823
 1308
-843
+856
 FITNESS_SELECTED_RATIO
 FITNESS_SELECTED_RATIO
 0
@@ -388,20 +386,20 @@ STORE_HOUSE_CONTACT
 
 SWITCH
 579
-767
+783
 759
-800
+816
 HUMAN_VISIT
 HUMAN_VISIT
-1
+0
 1
 -1000
 
 SWITCH
 758
-809
+822
 1019
-842
+855
 BREEDING_EXTERMINATION
 BREEDING_EXTERMINATION
 1
@@ -410,9 +408,9 @@ BREEDING_EXTERMINATION
 
 SWITCH
 758
-842
+855
 1019
-875
+888
 FUMIGATION
 FUMIGATION
 1
@@ -421,9 +419,9 @@ FUMIGATION
 
 SWITCH
 759
-648
+661
 1038
-681
+694
 BREEDING_REPLACEMENT_WOLBACHIA
 BREEDING_REPLACEMENT_WOLBACHIA
 1
@@ -432,9 +430,9 @@ BREEDING_REPLACEMENT_WOLBACHIA
 
 SWITCH
 759
-680
+693
 1020
-713
+726
 BREEDING_REPLACEMENT_STERILE
 BREEDING_REPLACEMENT_STERILE
 1
@@ -443,9 +441,9 @@ BREEDING_REPLACEMENT_STERILE
 
 SWITCH
 1018
-680
-1279
-713
+693
+1307
+726
 RELEASE_STERILE
 RELEASE_STERILE
 1
@@ -454,9 +452,9 @@ RELEASE_STERILE
 
 SWITCH
 1018
-648
-1279
-681
+661
+1308
+694
 RELEASE_WOLBACHIA
 RELEASE_WOLBACHIA
 1
@@ -476,9 +474,9 @@ STORE_CONTROL_RELEASES
 
 SLIDER
 1163
-841
+854
 1308
-874
+887
 OXITECH_RATIO
 OXITECH_RATIO
 0
@@ -491,9 +489,9 @@ HORIZONTAL
 
 SWITCH
 759
-712
+725
 1020
-745
+758
 BREEDING_REPLACEMENT_OXITECH
 BREEDING_REPLACEMENT_OXITECH
 1
@@ -501,10 +499,10 @@ BREEDING_REPLACEMENT_OXITECH
 -1000
 
 BUTTON
-1278
-711
-1438
-747
+948
+629
+1129
+662
 Release 20% Oxitech
 release-control-mosquitos-program 0 0 (floor INITIAL_POPULATION * .2) \"Oxitech\"
 NIL
@@ -519,9 +517,9 @@ NIL
 
 SWITCH
 1018
-712
-1279
-745
+725
+1308
+758
 RELEASE_OXITECH
 RELEASE_OXITECH
 1
@@ -541,9 +539,9 @@ WARMUP_COMPLETED?
 
 SWITCH
 758
-744
+757
 1019
-777
+790
 OVITRAPS?
 OVITRAPS?
 1
@@ -552,12 +550,12 @@ OVITRAPS?
 
 SWITCH
 758
-777
+790
 1019
-810
+823
 SUGAR_BAITS?
 SUGAR_BAITS?
-0
+1
 1
 -1000
 
@@ -606,10 +604,10 @@ NIL
 HORIZONTAL
 
 PLOT
-579
-874
-1146
-1141
+1307
+629
+1596
+887
 DeathProbabilities
 NIL
 NIL
@@ -621,8 +619,8 @@ true
 true
 "" ""
 PENS
-"EggInhibition" 1.0 0 -16777216 true "" "plot EGG_DEATH_BY_INHIBITION_PROBABILITY"
-"LarvaDeathProbability*10" 1.0 0 -13840069 true "" "plot (LARVA_DEATH_DENSITY_DEATH_PROBABILITY * 10)"
+"Egg" 1.0 0 -16777216 true "" "plot EGG_DEATH_BY_INHIBITION_PROBABILITY"
+"Larva" 1.0 0 -13840069 true "" "plot (LARVA_DEATH_DENSITY_DEATH_PROBABILITY * 10)"
 
 SWITCH
 1405
@@ -648,9 +646,9 @@ EGG_INHIBITION?
 
 CHOOSER
 579
-648
+661
 759
-693
+706
 TEMPERATURE_TYPE
 TEMPERATURE_TYPE
 "Constant" "YearlyVariation" "DailyAndYearlyVariation"
@@ -658,9 +656,9 @@ TEMPERATURE_TYPE
 
 SLIDER
 579
-692
+706
 759
-725
+739
 CONSTANT_TEMPERATURE
 CONSTANT_TEMPERATURE
 15
@@ -673,9 +671,9 @@ HORIZONTAL
 
 CHOOSER
 579
-723
+739
 759
-768
+784
 BreedingZonesNumber
 BreedingZonesNumber
 10 15 20 25 30 "GoogleMap"
@@ -692,31 +690,11 @@ Density-Dependent
 0
 
 TEXTBOX
-581
-630
-731
-648
-Environment Variables
-12
-0.0
-0
-
-TEXTBOX
 1410
 100
 1560
 118
 Social Networks
-12
-0.0
-0
-
-TEXTBOX
-761
-629
-1433
-647
-Control Measures
 12
 0.0
 0
@@ -732,10 +710,10 @@ Simulation Control
 0
 
 PLOT
-14
-869
-580
-1141
+13
+615
+579
+880
 RIDL Aleles
 NIL
 NIL
@@ -747,21 +725,21 @@ true
 true
 "" ""
 PENS
-"T: rr" 1.0 0 -4539718 true "" "plot count aedesp with [ridl_gene = 0 and life_stage = 3]"
-"T: Rr" 1.0 0 -11053225 true "" "plot count aedesp with [ridl_gene = 1 and life_stage = 3]"
-"T: RR" 1.0 0 -16777216 true "" "plot count aedesp with [ridl_gene = 2 and life_stage = 3]"
-"M: rr" 1.0 0 -14454117 true "" "plot count aedesp with [ridl_gene = 0 and female? = false and life_stage = 3]"
-"F: rr" 1.0 0 -1184463 true "" "plot count aedesp with [ridl_gene = 0 and female? = true and life_stage = 3]"
-"M: Rr" 1.0 0 -955883 true "" "plot count aedesp with [ridl_gene = 1 and female? = false and life_stage = 3]"
-"F: Rr" 1.0 0 -10263788 true "" "plot count aedesp with [ridl_gene = 1 and female? = true and life_stage = 3]"
-"M: RR" 1.0 0 -2674135 true "" "plot count aedesp with [ridl_gene = 2 and female? = false and life_stage = 3]"
-"F: RR" 1.0 0 -1264960 true "" "plot count aedesp with [ridl_gene = 2 and female? = true and life_stage = 3]"
+"T: rr" 1.0 0 -4539718 true "" "plot count aedesp with [ridl_gene = 0]"
+"T: Rr" 1.0 0 -11053225 true "" "plot count aedesp with [ridl_gene = 1]"
+"T: RR" 1.0 0 -16777216 true "" "plot count aedesp with [ridl_gene = 2]"
+"M: rr" 1.0 0 -14454117 true "" "plot count aedesp with [ridl_gene = 0 and female? = false]"
+"F: rr" 1.0 0 -1184463 true "" "plot count aedesp with [ridl_gene = 0 and female? = true]"
+"M: Rr" 1.0 0 -955883 true "" "plot count aedesp with [ridl_gene = 1 and female? = false]"
+"F: Rr" 1.0 0 -10263788 true "" "plot count aedesp with [ridl_gene = 1 and female? = true]"
+"M: RR" 1.0 0 -2674135 true "" "plot count aedesp with [ridl_gene = 2 and female? = false]"
+"F: RR" 1.0 0 -1264960 true "" "plot count aedesp with [ridl_gene = 2 and female? = true]"
 
 SLIDER
-580
-831
-759
-864
+579
+847
+758
+880
 HUMAN_VISITING_PROBABILITY
 HUMAN_VISITING_PROBABILITY
 0
@@ -774,9 +752,9 @@ HORIZONTAL
 
 SWITCH
 1018
-776
-1279
-809
+789
+1307
+822
 RELEASE_NEUTRAL
 RELEASE_NEUTRAL
 1
@@ -785,52 +763,31 @@ RELEASE_NEUTRAL
 
 SWITCH
 1018
-744
-1279
-777
+757
+1308
+790
 RELEASE_FOGGING
 RELEASE_FOGGING
 1
 1
 -1000
 
-PLOT
-14
-616
-580
-871
-Control Measures Demographics
-NIL
-NIL
-0.0
-10.0
-0.0
-10.0
-true
-true
-"" ""
-PENS
-"Wolbachia" 1.0 0 -16777216 true "" "plot count aedesp with [wolbachia? and life_stage = 3]"
-"RIDL" 1.0 0 -11221820 true "" "plot count aedesp with [oxitech? and life_stage = 3]"
-"Sterile" 1.0 0 -6459832 true "" "plot count aedesp with [sterile? and life_stage = 3]"
-"Fogging*100" 1.0 0 -955883 true "" "plot 100 * FOGGING_KILL_PROBABILITY"
-
 SWITCH
-581
-800
+579
+815
 759
-833
+848
 GRAVITY_VISIT?
 GRAVITY_VISIT?
-1
+0
 1
 -1000
 
 BUTTON
-1278
-745
-1438
-778
+1129
+629
+1308
+662
 Apply Fogging
 fogging-refill TRUE 1
 NIL
