@@ -74,7 +74,7 @@ to exterminate-and-or-replace
    if(BREEDING_REPLACEMENT_WOLBACHIA)[breeding-site-replacement "Wolbachia"]
    if(BREEDING_REPLACEMENT_STERILE)[breeding-site-replacement "Sterile"]
    if(BREEDING_REPLACEMENT_OXITECH)[breeding-site-replacement "Oxitech"]
-   if(BREEDING_REPLACEMENT_FITNESS)[breeding-site-replacement "Fitness"]  
+   ;if(BREEDING_REPLACEMENT_FITNESS)[breeding-site-replacement "Fitness"]  
 end
 ;CONTACT HUMAN-----------------------------------------------
 to contact-human
