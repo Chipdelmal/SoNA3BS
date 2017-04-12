@@ -393,7 +393,7 @@ SWITCH
 800
 HUMAN_VISIT
 HUMAN_VISIT
-0
+1
 1
 -1000
 
@@ -546,7 +546,7 @@ SWITCH
 777
 OVITRAPS?
 OVITRAPS?
-0
+1
 1
 -1000
 
@@ -562,11 +562,11 @@ SUGAR_BAITS?
 -1000
 
 PLOT
-13
-734
-582
-875
-DensityDependentVariables
+1404
+363
+1596
+629
+Food
 NIL
 NIL
 0.0
@@ -574,11 +574,10 @@ NIL
 0.0
 10.0
 true
-true
+false
 "" ""
 PENS
 "Food" 1.0 0 -13345367 true "" "plot sum [food] of sugars"
-"MaxEggs" 1.0 0 -7500403 true "" "plot POPULATION_MAX_EGGS"
 
 SWITCH
 1405
@@ -607,10 +606,10 @@ NIL
 HORIZONTAL
 
 PLOT
-13
-614
-580
-734
+579
+874
+1146
+1141
 DeathProbabilities
 NIL
 NIL
@@ -733,10 +732,10 @@ Simulation Control
 0
 
 PLOT
-13
-875
-917
-1369
+14
+869
+580
+1141
 RIDL Aleles
 NIL
 NIL
@@ -796,10 +795,10 @@ RELEASE_FOGGING
 -1000
 
 PLOT
-917
-874
-1546
-1368
+14
+616
+580
+871
 Control Measures Demographics
 NIL
 NIL
