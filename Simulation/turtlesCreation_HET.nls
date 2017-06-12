@@ -83,15 +83,15 @@ end
 to create-humans-houses-breeding-landmarks
   let house_name_counter 0
   set human_name_counter 0
-  (foreach xcord ycord areas groups individuals gravities[
-    create-house-at-coordinates (?1) (?2) (?3) (?4) (?5) (item house_name_counter names_houses) (?6)
+  (foreach xcord ycord areas groups individuals gravities[ [xc yc ar gr in gra] ->
+    create-house-at-coordinates (xc) (yc) (ar) (gr) (in) (item house_name_counter names_houses) (gr)
     set house_name_counter (house_name_counter + 1)
-    create-landmark-and-breeding-zone-around-coordinates (?1) (?2)
-    create-humans-at-houses (?4) (?5)
-    if(OVITRAPS?)[create-ovitrap-around-coordinates (?1) (?2)]
+    create-landmark-and-breeding-zone-around-coordinates (xc) (yc)
+    create-humans-at-houses (gr) (in)
+    if(OVITRAPS?)[create-ovitrap-around-coordinates (xc) (yc)]
     let counter 0
     while[counter < 5][
-      create-sugars-around-coordinates ?1 ?2
+      create-sugars-around-coordinates xc yc
       set counter (counter + 1)
     ]
   ])
@@ -123,10 +123,10 @@ to create-ovitrap-around-coordinates [xcoord ycoord]
 end
 to create-workZones-population
   let wCounter 0
-  (foreach wxcord wycord[
+  (foreach wxcord wycord[ [wxc wyc] ->
     create-workZones 1[
       ;setxy random max-pxcor random max-pycor
-      setxy ?1 ?2
+      setxy wxc wyc
       set size 12
       set color orange
       set shape "house"

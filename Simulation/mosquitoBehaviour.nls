@@ -155,12 +155,10 @@ to probabilistic-natural-death
    ]
 end
 to probabilistic-die-by-starvation
-  ;;NEEDS FLOW DIAGRAM
   ;Kills a mosquito probabilistically on accounts of environment carrying capacity (DEPRECIATED - NO BIOLOGICAL JUSTIFICATION)
   if(random-float 1 < (DEATH_BY_STARVATION_PROBABILITY ^ (2 * POPULATION_CAP_THRESHOLD / count aedesp)))[act-dead]
 end
 to probabilistic-die-by-predation
-  ;;NEEDS FLOW DIAGRAM
   ;Kills a mosquito probabilistically on accounts of density-dependent predaiton (DEPRECIATED - NO BIOLOGICAL JUSTIFICATION)
   if(random-float 1 < (DEATH_BY_PREDATOR_PROBABILITY ^ (2 * POPULATION_CAP_THRESHOLD / (count aedesp with [life_stage = 3]))))[act-dead]
 end

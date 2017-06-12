@@ -86,7 +86,7 @@ to contact-human
 end
 to human-contact-human [humans_in_radius]
   let names_list [name] of humans_in_radius
-  let contact_sentence (sentence (map [(word "{" ? "," ticks "}")] names_list))
+  let contact_sentence (sentence (map [ x -> (word "{" x "," ticks "}")] names_list))
   set contacts_list lput contact_sentence contacts_list
 end
 ;CONTACT HOUSE----------------------------------------------
@@ -101,12 +101,12 @@ to contact-house
 end
 to human-contact-house [houses_in_radius]
   let names_list_houses [name] of houses_in_radius
-  let contact_sentence_houses (sentence (map [(word "{" ? "," ticks "}")] names_list_houses))
+  let contact_sentence_houses (sentence (map [x -> (word "{" x "," ticks "}")] names_list_houses))
   set contacts_houses_list lput contact_sentence_houses contacts_houses_list  
 end
 to human-contact-workZone [workZones_in_radius]
   let names_list_workZones [name] of workZones_in_radius
-  let contact_sentence_workZones (sentence (map [(word "{" ? "," ticks "}")] names_list_workZones))
+  let contact_sentence_workZones (sentence (map [x -> (word "{" x "," ticks "}")] names_list_workZones))
   set contacts_houses_list lput contact_sentence_workZones contacts_houses_list
 end
 ;DIE HUMAN--------------------------------------------------

@@ -108,8 +108,8 @@ to-report weighted-random [ weights ]
   let pick random-float sum weights
   let total 0
   let i 0
-  foreach weights [
-    set total total + ?
+  foreach weights [ x ->
+    set total total + x
     if pick < total [ report i ]
     set i i + 1
   ]
