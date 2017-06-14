@@ -16,13 +16,13 @@ patches-own[
 ]
 aedesp-own[
   age ;; V:Int: Stores the mosquito age in ticks
-  mated? ;; V:Bool: Stores the female state in mating 
+  mated? ;; V:Bool: Stores the female state in mating
   female? ;; C:Bool: Differentiates male mosquitos from females
   bloodfed? ;; V:Bool: Stores the female state in bloodfed as part of reproductive cycle
   laidEggs? ;; V:Bool: Stores the female state in oviposition
   sterile? ;; C:Bool: Differentiates sterile mosquitos (males) from non-sterile mosquitos
   sterileMate? ;; V:Bool: Stores if a female mated with a sterile male
-  wolbachia? ;; C:Bool: Differentiates wolbachia-infected mosquitos from non-infected 
+  wolbachia? ;; C:Bool: Differentiates wolbachia-infected mosquitos from non-infected
   wolbachiaMate? ;; V:Bool: Stores if a female mated with a wolbachia-infected mate
   oxitech? ;; C:Bool: Differentiates oxitec males from regular males
   oxitechMate? ;; V:Bool: Stores if a female mated with an oxitec male
@@ -37,7 +37,7 @@ aedesp-own[
   gonotrophic_cooldown ;; V:Int: Timer from bloodfeed until oviposition ready
   metabolic_rate ;; V:Int: Stores the metabolic development of the mosquito (when equal to one it resets)
   life_stage ;; V:Int: Stores the current life phase of the mosquito for behaviour purposes
-  life_stage_ticks ;; V:Int: Stores the number of ticks a mosquito has spent in a given life stage 
+  life_stage_ticks ;; V:Int: Stores the number of ticks a mosquito has spent in a given life stage
   life_stage_ticks_list ;; V:IntArray: Stores the number of ticks a mosquito has spent in each life stage
   hunger ;; V:Int: Stores the hunger level of the mosquito
   transition_ages
@@ -46,11 +46,11 @@ aedesp-own[
 ]
 humans-own[
   replacementCooldown ;; V:Int: Timer that avoids a loop in the population replacement strategies
-  workZone ;; C:Int: Determines to which work zone a human must go to CURRENTLY UNUSED
+  ;workZoneID ;; C:Int: Determines to which work zone a human must go to CURRENTLY UNUSED
   visitingHouseNumber ;; V:Int: Determines which house a human will visit
   visitingCooldown ;; V:Int: Timer that avoids visiting loops
   visiting? ;; V:Bool: Determines if a human is currently visiting another house
-  group ;; 
+  group ;;
   groupP ;;
   worker? ;; C:Bool: Differentiates workers from homestayers
   name ;; C:String: Person's name
@@ -60,7 +60,7 @@ humans-own[
   flu ;; V:Bool: Stores the flu sick state of an individual CURRENTLY UNUSED
   contacts_list ;; V:StringArray: Stores the direct contacts between the current individual and other ones
   contacts_houses_list ;; V:StringArray: Stores the direct contacts between the current individual and buildings
-  contacted? ;; V:Bool: Temporary flow variable to avoid contacts loop 
+  contacted? ;; V:Bool: Temporary flow variable to avoid contacts loop
   contacted_house? ;; V:Bool: Temporary flow variable to avoid contacts loop
   contacted_workZone? ;; V:Bool: Temporary flow variable to avoid contacts loop
 ]
@@ -83,16 +83,140 @@ sugarBaits-own[
   food ;; V:Int: Available food in this sugar bait
 ]
 ovitraps-own[
-  
+
+]
+globals[
+  BITES_NUMBER
+	ACTION_RADIUS
+	adultAgesList
+	AGE_DEVIATION
+	areas
+	BLOODFEED_COOLDOWN
+	BLOODFEED_COOLDOWN_DISPERSION
+	BREEDING_DESTROY?
+	CONTACT_REFRESH_RATE
+	CONTROL_RELEASES_LIST
+	DAILY_TEMPERATURE_DEVIATION
+	DEATH_BY_HUMAN_PROBABILITY
+	DEATH_BY_OVITRAP_PROBABILITY
+	DEATH_BY_PREDATOR_PROBABILITY
+	DEATH_BY_STARVATION_PROBABILITY
+	EGG_DEATH_BY_INHIBITION_PROBABILITY
+	EGG_SCALING_FACTOR
+	EGGS_LAID
+	EGGS_LAID_DEVIATION
+	EGG_THERMODYNAMIC
+	EMERGENCE_DEATH_PROBABILITY
+	EXTERMINATION_FUMIGATION_RATIO
+	FILE_NAME
+	FILE_NAME_TEMP
+	FITNESS_RELEASE_DELAY
+	FITNESS_RELEASE_STOP
+	FITNESS_REPLACE_QUANTITY
+	FITNESS_SELECTED_OFFSPRING_PROBABILITY
+	FITNESS_SELECTION_EFFECTIVITY
+	FOGGING_KILL_PROBABILITY
+	FOGGING_RELEASE_DELAY
+	FOGGING_RELEASE_STOP
+	FOGGING_REPLACE_QUANTITY
+	FOOD_AMOUNT_PER_SOURCE
+	GLOBAL_BITES_LIST
+	GLOBAL_CONTACTS_HOUSES_LIST
+	GLOBAL_CONTACTS_LIST
+	GONOTROPHICA1_TICKS_DURATION
+	GONOTROPHICA2_TICKS_DURATION
+	GONOTROPICA1_THERMODYNAMIC
+	GONOTROPICA2_THERMODYNAMIC
+	groups
+	HALF_DAY
+	HOUSE_CONTACT_REFRESH_BOOL
+	HOUSE_CONTACT_REFRESH_RATE
+	HOUSE_SIZE
+	HUMAN_ACTION_RADIUS
+	HUMAN_CONTACT_RADIUS
+	HUMAN_CONTACT_REFRESH_BOOL
+	HUMAN_HOUSE_CONTACT_RADIUS
+	HUMAN_KILLING_RANGE
+	HUMAN_MOVEMENT_FOCUS
+	HUMAN_MOVEMENT_SPEED
+	HUMAN_MOVEMENT_SPEED_DEVIATION
+	human_name_counter
+	HUMAN_SIZE
+	individuals
+	LARVA_DEATH_DENSITY_DEATH_PROBABILITY
+	LARVA_DENSITY_DEATHS
+	LARVA_THERMODYNAMIC
+	LAST_FOGGING_TIME
+	MOSQUITO_ACTION_RADIUS
+	MOSQUITO_COUNT_BREEDING_DESTROY_THRESHOLD
+	MOSQUITO_DETECTION_RADIUS
+	MOSQUITO_FEEDING_RATE
+	MOSQUITO_FEEDING_THRESHOLD
+	mosquitoLifespan
+	MOSQUITO_MOVEMENT_FOCUS
+	MOSQUITO_MOVEMENT_SPEED_DEVIATION
+	MOSQUITO_NIGHT_MOVEMENT_PROBABILITY
+	MOSQUITO_SIZE
+	MOSQUITO_SPEEDS_GLOBAL
+	names_houses
+	names_listg
+	names_workZones
+	NEUTRAL_RELEASE_DELAY
+	NEUTRAL_RELEASE_STOP
+	NEUTRAL_REPLACE_QUANTITY
+	NUMBER_OF_DAYS
+	ovipositions_count
+	OXITECH_RELEASE_DELAY
+	OXITECH_RELEASE_STOP
+	OXITECH_REPLACE_QUANTITY
+	PATH
+	POPULATION_CAP_PENALTY
+	POPULATION_CAP_THRESHOLD
+	POPULATION_MAX_EGGS
+	POPULATION_POSITIONS
+	PUPA_THERMODYNAMIC
+	REPLACEMENT_COOLDOWN
+	REPLACEMENT_COOLDOWN?
+	scenario_number
+	SCHOOLFIELD_MODEL_CONSTANTS
+	SECONDS_PER_TICK
+	SOURCE_DECREASE
+	SOURCE_INCREASE_RATE
+	SPEED_DEVIATION
+	STERILE_RELEASE_DELAY
+	STERILE_RELEASE_STOP
+	STERILE_REPLACE_QUANTITY
+	TICK_ADULT_DEATH_PROBABILITY
+	TICK_EGG_DEATH_PROBABILITY
+	tickPhasesTransitionAges
+	tickPhasesTransitionRates
+	tickTemperature
+	TICK_TEMPERATURE_PHASES_REFRESH_RATE
+	TIME_SINCE_LAST_FOGGING
+	TRANSITION_AGES_GLOBAL
+	VISITING_COOLDOWN_MAX
+	WARMUP_COMPLETED?
+	WARMUP_PERIOD
+	WEEKEND?
+	WOLBACHIA_EFFECTIVITY
+	WOLBACHIA_RELEASE_DELAY
+	WOLBACHIA_RELEASE_STOP
+	WOLBACHIA_REPLACE_QUANTITY
+	WORKING_HOUR?
+	wxcord
+	wycord
+	xcord
+	ycord
+  gravities
 ]
 @#$#@#$#@
 GRAPHICS-WINDOW
 579
 10
-1405
-586
-150
-100
+1403
+564
+-1
+-1
 2.711443
 1
 10
@@ -139,7 +263,7 @@ INITIAL_POPULATION
 INITIAL_POPULATION
 0
 10000
-400
+400.0
 1
 1
 NIL
@@ -198,7 +322,7 @@ STERILE_RATIO
 STERILE_RATIO
 0
 1
-0
+0.0
 .05
 1
 NIL
@@ -213,7 +337,7 @@ WOLBACHIA_RATIO
 WOLBACHIA_RATIO
 0
 1
-0
+0.0
 .05
 1
 NIL
@@ -345,7 +469,7 @@ FITNESS_SELECTED_RATIO
 FITNESS_SELECTED_RATIO
 0
 1
-0
+0.0
 .05
 1
 NIL
@@ -481,7 +605,7 @@ OXITECH_RATIO
 OXITECH_RATIO
 0
 1
-0
+0.0
 .05
 1
 NIL
@@ -597,7 +721,7 @@ EXPORT_RATE
 EXPORT_RATE
 0
 1000
-144
+144.0
 50
 1
 NIL
@@ -614,7 +738,7 @@ NIL
 0.0
 10.0
 0.0
-0.0050
+0.005
 true
 true
 "" ""
@@ -663,7 +787,7 @@ CONSTANT_TEMPERATURE
 CONSTANT_TEMPERATURE
 15
 40
-25
+25.0
 1
 1
 NIL
@@ -677,7 +801,7 @@ CHOOSER
 BreedingZonesNumber
 BreedingZonesNumber
 10 15 20 25 30 "GoogleMap"
-0
+3
 
 TEXTBOX
 1408
@@ -743,8 +867,8 @@ SLIDER
 HUMAN_VISITING_PROBABILITY
 HUMAN_VISITING_PROBABILITY
 0
-1
-0.05908
+.1
+0.05
 .00028
 1
 NIL
@@ -779,7 +903,7 @@ SWITCH
 848
 GRAVITY_VISIT?
 GRAVITY_VISIT?
-0
+1
 1
 -1000
 
@@ -1121,9 +1245,8 @@ false
 0
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
-
 @#$#@#$#@
-NetLogo 5.0.3
+NetLogo 6.0.1
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
@@ -2036,15 +2159,14 @@ XML-finish-write</final>
 @#$#@#$#@
 default
 0.0
--0.2 0 1.0 0.0
+-0.2 0 0.0 1.0
 0.0 1 1.0 0.0
-0.2 0 1.0 0.0
+0.2 0 0.0 1.0
 link direction
 true
 0
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
-
 @#$#@#$#@
 0
 @#$#@#$#@
