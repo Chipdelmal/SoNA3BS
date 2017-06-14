@@ -98,19 +98,24 @@ to update_metabolic_rate [life_index]
     [
       ;Failed emergence
       if(random-bool EMERGENCE_DEATH_PROBABILITY)[act-dead]
-      if(oxitech? and female? = true)[act-dead];;CHECK!!!!!!!!
+      if(oxitech? and female? = true)[act-dead];Female specificity
       ;if(oxitech?)[act-dead]
       hatch ((EGG_SCALING_FACTOR - 1))
     ]
   ]  
 end
 to-report weighted-random [ weights ]
-  let pick random-float sum weights
-  let total 0
-  let i 0
-  foreach weights [ x ->
-    set total total + x
-    if pick < total [ report i ]
-    set i i + 1
+  ifelse(is-list? weights)
+  [
+    let pick random-float sum weights
+    let total 0
+    let i 0
+    foreach weights [ x ->
+      set total total + x
+      if pick < total [ report i ]
+      set i i + 1
+    ]
+  ][
+    report 0
   ]
 end
