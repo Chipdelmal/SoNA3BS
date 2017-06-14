@@ -104,7 +104,7 @@ to act-bloodfeed
         if(STORE_BITES and WARMUP_COMPLETED?)[set bitten_list lput (word "{" ([name] of closest_human) "," ticks "}") bitten_list]
       ]
       set BITES_NUMBER (BITES_NUMBER + 1)
-      set gonotrophic_cooldown floor (random-normal GONOTROPHICA1_TICKS_DURATION BLOODFEED_COOLDOWN_DISPERSION)
+      set gonotrophic_cooldown 0;floor (random-normal GONOTROPHICA1_TICKS_DURATION BLOODFEED_COOLDOWN_DISPERSION)
       set bloodfed? true
       set hunger 0
     ]
@@ -138,14 +138,18 @@ to act-not-bloodfed-yet
 end
 to act-bloodfed-yet
    ;;Once bloodmeal has taken place gonotrophic cooldown has to expire so that eggs can develop
-   ifelse(gonotrophic_cooldown = 0);(gonotrophic_cooldown >= 1)
-   [act-layEggs]
+   ;print (word "GC: " gonotrophic_cooldown)
+   ifelse(gonotrophic_cooldown >= 1);(gonotrophic_cooldown >= 1)
+   [
+    ;print (word "LAID EGGS!!!!!!!!!!! " ovipositionCounter)
+    act-layEggs
+   ]
    [
        ;;If the gonotrophic cooldown is not zero (undeveloped eggs) wait
        move-pseudo-random-walking ((item 4 movement_speeds) / 10) MOSQUITO_MOVEMENT_SPEED_DEVIATION
-       set gonotrophic_cooldown (gonotrophic_cooldown - 1)
-       ;ifelse(ovipositionCounter = 0)
-       ;[set gonotrophic_cooldown (gonotrophic_cooldown + (item 3 tickPhasesTransitionRates))]
-       ;[set gonotrophic_cooldown (gonotrophic_cooldown + (item 4 tickPhasesTransitionRates))]
+       ;set gonotrophic_cooldown (gonotrophic_cooldown - 1)
+       ifelse(ovipositionCounter = 0)
+       [set gonotrophic_cooldown (gonotrophic_cooldown + (item 3 tickPhasesTransitionRates))]
+       [set gonotrophic_cooldown (gonotrophic_cooldown + (item 4 tickPhasesTransitionRates))]
    ]  
 end
