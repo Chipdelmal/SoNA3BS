@@ -850,14 +850,14 @@ true
 "" ""
 PENS
 "T: rr" 1.0 0 -4539718 true "" "plot count aedesp with [ridl_gene = 0]"
-"T: Rr" 1.0 0 -11053225 true "" "plot count aedesp with [ridl_gene = 1]"
-"T: RR" 1.0 0 -16777216 true "" "plot count aedesp with [ridl_gene = 2]"
+"T: Rr_1" 1.0 0 -11053225 true "" "plot count aedesp with [ridl_gene = 1]"
+"T: RR_2" 1.0 0 -16777216 true "" "plot count aedesp with [ridl_gene = 2]"
 "M: rr" 1.0 0 -14454117 true "" "plot count aedesp with [ridl_gene = 0 and female? = false]"
 "F: rr" 1.0 0 -1184463 true "" "plot count aedesp with [ridl_gene = 0 and female? = true]"
-"M: Rr" 1.0 0 -955883 true "" "plot count aedesp with [ridl_gene = 1 and female? = false]"
-"F: Rr" 1.0 0 -10263788 true "" "plot count aedesp with [ridl_gene = 1 and female? = true]"
-"M: RR" 1.0 0 -2674135 true "" "plot count aedesp with [ridl_gene = 2 and female? = false]"
-"F: RR" 1.0 0 -1264960 true "" "plot count aedesp with [ridl_gene = 2 and female? = true]"
+"M: Rr_1" 1.0 0 -955883 true "" "plot count aedesp with [ridl_gene = 1 and female? = false]"
+"F: Rr_1" 1.0 0 -10263788 true "" "plot count aedesp with [ridl_gene = 1 and female? = true]"
+"M: RR_2" 1.0 0 -2674135 true "" "plot count aedesp with [ridl_gene = 2 and female? = false]"
+"F: RR_2" 1.0 0 -1264960 true "" "plot count aedesp with [ridl_gene = 2 and female? = true]"
 
 SLIDER
 579
@@ -1246,7 +1246,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.0.1
+NetLogo 6.1.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
